@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+
+  get 'bookings/new'
+  get 'reviews/new'
+  root to: 'caddies#index'
   devise_for :users
 
   # resources :users, only: %i[show new create edit update delete]
