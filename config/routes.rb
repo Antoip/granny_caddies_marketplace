@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'caddies#home'
+  root to: 'pages#home'
   devise_for :users
 
   # resources :users, only: %i[show new create edit update delete]

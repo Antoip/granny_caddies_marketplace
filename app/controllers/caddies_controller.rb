@@ -1,2 +1,0 @@
-class CaddiesController < ApplicationController
-end
