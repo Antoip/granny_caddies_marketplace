@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'caddies/index'
+  get 'caddies/show'
+  get 'caddies/new'
+  get 'caddies/edit'
   root to: 'caddies#index'
   devise_for :users
 
