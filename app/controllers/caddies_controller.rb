@@ -1,0 +1,2 @@
+class CaddiesController < ApplicationController
+end
