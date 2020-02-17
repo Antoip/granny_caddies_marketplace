@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'caddies/index'
   get 'caddies/show'
   get 'caddies/new'
   get 'caddies/edit'
+=======
+  get 'bookings/new'
+  get 'reviews/new'
+>>>>>>> 49fb8f0e0ceaf06cae571a842890bad59f6af78e
   root to: 'caddies#index'
   devise_for :users
 
