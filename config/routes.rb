@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'bookings/new'
-  get 'reviews/new'
   root to: 'caddies#index'
   devise_for :users
 
