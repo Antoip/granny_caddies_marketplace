@@ -12,8 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
   </head>
   <body>
-    <%= yield %>
     <%= render 'shared/navbar' %>
+    <%= yield %>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
