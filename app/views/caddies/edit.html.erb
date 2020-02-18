@@ -1,2 +1,10 @@
-<h1>Caddies#edit</h1>
-<p>Find me in app/views/caddies/edit.html.erb</p>
+<div class="container mt-3 mb-5">
+  <div class="row">
+    <h1>Keep us informed of your caddie's state!</h1>
+  </div>
+  <div class="row d-flex justify-content-around">
+    <div class="form">
+      <%= render 'shared/form_caddie', caddie: @caddie %>
+    </div>
+  </div>
+</div>
