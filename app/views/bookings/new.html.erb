@@ -1,2 +1,20 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class="new-booking-container">
+  <h1>Booking a Caddie</h1>
+  <div class="caddie-details">
+    <%= @caddie.name %>
+    <%= @caddie.condition %>
+    <%= @caddie.wheels_number %> wheels
+    <div class="booking-price">
+      <p class="price" data-price="10"><%= @caddie.price %></p>$
+    </div>
+  </div>
+  <div class="form-wrapper my-5" style="width: 400px; margin: 0 auto;">
+    <h2>Select Your Dates</h2>
+
+    <%= simple_form_for [@caddie, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker start-date"} %>
+      <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker end-date"} %>
+      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
