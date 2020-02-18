@@ -1,0 +1,8 @@
+  <%= simple_form_for caddie do |f| %>
+  <%= f.input :name %>
+  <%= f.input :availability, as: :radio_buttons %>
+  <%= f.input :condition, collection: Caddie::CONDITIONS %>
+  <%= f.input :wheels_number, collection: Caddie::WHEELS_NUMBER %>
+  <%= f.input :capacity, collection: Caddie::CAPACITY %>
+  <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
