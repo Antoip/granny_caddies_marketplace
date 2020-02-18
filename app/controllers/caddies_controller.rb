@@ -16,7 +16,8 @@ class CaddiesController < ApplicationController
 
   def create
     @caddie = Caddie.new(caddie_params)
-    @caddie.user_id = current_user.id
+    @caddie.user = current_user
+    raise
     if @caddie.save
       redirect_to caddy_path(@caddie)
     else
@@ -41,7 +42,7 @@ class CaddiesController < ApplicationController
   private
 
   def caddie_params
-    params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity)
+    params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity, :price)
   end
 
 end
