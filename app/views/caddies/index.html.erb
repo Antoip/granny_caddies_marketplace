@@ -1,4 +1,31 @@
-Index
-<div class="test">
-  <p>hello</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1509718497735-12d26d780d2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);">
+  <div class="container">
+    <h1><strong>CaddY'n'B</strong>!</h1>
+    <p>
+      <span id="banner-typed-text"></span>
+    </p>
+  </div>
 </div>
+
+<div class="container-index">
+  <div class="cards">
+    <% @caddies.each do |caddy| %>
+      <div class="card">
+        <img src="https://image.darty.com/darty?type=image&source=/market/2017/06/28/mkp_qX2QqqJL0Cc06g.jpeg&width=400&height=300&quality=70" />
+        <div class="home-card-title">
+          <h2><%= caddy.name %></h2>
+        </div>
+        <div class="home-card-text">
+          <p>Condition : <%=caddy.condition %></p>
+          <p> Nombre de roues : <%= caddy.wheels_number %></p>
+          <p> Capacity : <%= caddy.capacity %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div
+    id="map"
+    style="width: 500px; height: 100vh; background-color: #6A93F5;"
+  ></div>
+</div>
+

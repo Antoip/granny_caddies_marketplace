@@ -46,12 +46,12 @@ border-bottom-color: rgb(228, 187, 237);
 }
 
 
-img {
+.logo-anim {
   border-radius: 50%;
   -webkit-transition: -webkit-transform .8s ease-in-out;
           transition:         transform .8s ease-in-out;
 }
-img:hover {
+.logo-anim:hover {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
@@ -61,6 +61,3 @@ img:hover {
   border-radius: 10px;
 }
 
-.test {
-  background: rgb(196, 150, 206);
-}
