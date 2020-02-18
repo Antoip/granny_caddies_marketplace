@@ -1,6 +1,6 @@
 class CaddiesController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @caddies = Caddie.all
@@ -16,7 +16,7 @@ class CaddiesController < ApplicationController
 
   def create
     @caddie = Caddie.new(caddie_params)
-    @caddie.user_id = current_user
+    @caddie.user_id = current_user.id
     if @caddie.save
       redirect_to caddy_path(@caddie)
     else
