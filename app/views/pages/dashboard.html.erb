@@ -5,7 +5,7 @@
       <% i=1 %>
       <% Caddie.where(user_id: current_user).each do |caddie| %>
       <% i+=1 %>
-      <div class="card borders w-75">
+      <div class="cardy borders w-75">
         <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
           <h2 class="mb-0">
             <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
@@ -37,7 +37,7 @@
                   <li>Number of wheels : <%= caddie.wheels_number %></li>
                   <li>Capacity : <%= caddie.capacity %></li>
                 </ul>
-                <div class="badge badge-secondary price"><%= caddie.price %> €</div>
+                <div class="badge badge-secondary pricey"><%= caddie.price %> €</div>
               </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
       <% today = Date.today %>
       <% Booking.where(user_id: current_user).where("start_date > 'today'").each do |booking| %>
       <% i+=1 %>
-      <div class="card borders w-100">
+      <div class="cardy borders w-100">
         <div class="card-header d-flex justify-content-between" id="heading<%= i %>">
           <h2 class="mb-0">
             <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
@@ -88,7 +88,7 @@
       <% today = Date.today %>
       <% Booking.where(user_id: current_user).where("end_date < 'today'").each do |booking| %>
       <% i+=1 %>
-      <div class="card borders w-100">
+      <div class="cardy borders w-100">
         <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
           <h2 class="mb-0">
             <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
