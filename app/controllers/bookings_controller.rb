@@ -2,15 +2,17 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @caddie = Caddie.find(params[:caddy_id])
     @booking = Booking.new
   end
 
   def create
+    raise
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.caddie = Caddie.find(params[:id])
+    @booking.caddie = Caddie.find(params[:caddy_id])
     if @booking.save
-      redirect_to caddy_path(@booking.caddie)
+      redirect_to dashboard_path
     else
       render :new
     end

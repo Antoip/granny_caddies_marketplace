@@ -6,18 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
-
-#lets start with cadies it is going to be funny
-
-
-#caddies
-#users
-#bookings
-#reviews
 require 'faker'
 
+puts 'Cleaning database...'
+Review.delete_all
 
 puts 'Cleaning database...'
 Booking.delete_all
@@ -30,8 +22,6 @@ User.delete_all
 
 
 
-puts 'Cleaning database...'
-Review.delete_all
 
 # Users
 
@@ -45,8 +35,6 @@ users_attributes = []
     )
 
 end
-
-
 
 
 # Caddies
@@ -68,9 +56,12 @@ myCondition = [ "New", "Bad Condition", "Perfect Condition" ]
     description: Faker::Restaurant.description,
     wheels_number: rand(1..8),
     capacity: rand(5..10),
-    user: User.find(rand(first..last))
+    user: User.find(rand(first..last)),
+    price: rand(1..100)
     )
 end
+
+
 
 # Bookings
 
@@ -89,7 +80,6 @@ bookings_attributes = []
 
 end
 
-
 #Reviews
 
 firstBooking = Booking.first.id
@@ -105,5 +95,7 @@ reviews_attributes = []
     )
 
 end
+
+
 
 
