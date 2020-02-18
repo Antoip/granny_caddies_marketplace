@@ -12,7 +12,20 @@
               <%= caddie.name.capitalize %>
             </button>
           </h2>
-          <div class="btn btn-perso2">Make unavailable</div>
+          <div class="d-flex align-items-center">
+            <% if caddie.availability %>
+              <i class="fas fa-circle available"></i>
+            <% else %>
+              <i class="fas fa-circle unavalable"></i>
+            <% end %>
+            <div class="btn btn-perso2 ml-3">
+            <% if caddie.availability %>
+              Make unavailable
+            <% else %>
+              Make available
+            <% end %>
+            </div>
+          </div>
         </div>
 
         <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
@@ -42,13 +55,13 @@
       <% Booking.where(user_id: current_user).where("start_date > 'today'").each do |booking| %>
       <% i+=1 %>
       <div class="card borders w-100">
-        <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
+        <div class="card-header d-flex justify-content-between" id="heading<%= i %>">
           <h2 class="mb-0">
             <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
               <%= booking.caddie.name.capitalize %>
             </button>
           </h2>
-          <div class="btn btn-perso2">Cancel</div>
+            <div class="btn btn-perso2">Cancel</div>
         </div>
 
         <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
