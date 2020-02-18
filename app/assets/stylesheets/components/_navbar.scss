@@ -4,17 +4,14 @@
   opacity: 0.7;
   width: 100%;
   border-radius: 5px;
-  color: rgb(196, 150, 206)
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-  color: rgb(196, 150, 206)
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
-  color: rgb(196, 150, 206)
 }
 
 .navbar-btn {
@@ -24,7 +21,6 @@
   margin-right:10px;
   border-radius: 10px;
   font-weight: bold;
-  color: rgb(196, 150, 206)
 }
 
 
@@ -33,16 +29,18 @@
   border-style: solid;
   border-width: 1.5px;
   border-color: transparent;
-  color: rgb(196, 150, 206)
 }
 
-.color-secondary {
-  color: rgb(196, 150, 206);
-}
+#color1, #color2 {
+  color: $light-purple ;
 
+  &:hover {
+    color: $dark-purple ;
+  }
+}
 
 .nav-link:hover {
-border-bottom-color: rgb(228, 187, 237);
+border-bottom-color: $light-purple ;
 }
 
 
@@ -62,5 +60,5 @@ img:hover {
 }
 
 .test {
-  background: rgb(196, 150, 206);
+  background: $dark-purple ;
 }
