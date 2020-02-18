@@ -5,11 +5,11 @@
     <div class="caddie-picture"><img src="https://www.jardinetsaisons.fr/1141-thickbox_default/poussette-de-marche-isotherme-6-roues.jpg" alt=""></div>
   </div>
 
+
   <div class="caddie-details-show">
     <div class="spacer"></div>
 
     <div class="owner-details-container">
-
       <div class="caddie-details-card">
         <img class="avatar owner-picture"  aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
         <div class="owner-details-card">
@@ -37,8 +37,18 @@
   <div class="caddie-booking-reviews">
     <h3>Reviews</h3>
     <div class="review-container">
-
+      <% if @caddie.reviews.empty? %>
+        <p>Il n'y a pas de review pour cet article</p>
+      <% else %>
+        <% @caddie.reviews.each do |review| %>
+          <div>
+            <%= review.rating %>
+          </div>
+          <div>
+            <%= review.description %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
-
 </div>

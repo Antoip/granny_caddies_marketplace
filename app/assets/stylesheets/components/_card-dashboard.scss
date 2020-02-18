@@ -10,11 +10,12 @@
   border-right-style: none;
   border-left-style: none;
   border-bottom-style: solid;
+  border-bottom-width: 1px;
   border-bottom-color: $dark-purple;
   border-top-color: $dark-purple;
 }
 
-.card {
+.cardy {
   background: transparent;
 }
 
@@ -65,7 +66,7 @@
     list-style-type: none;
   }
 
-  .price {
+  .pricey {
     position: absolute;
     bottom: 10px;
     right: 10px;

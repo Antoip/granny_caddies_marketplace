@@ -4,4 +4,5 @@ class Booking < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :user, uniqueness: { scope: :caddie }
+  has_many :reviews
 end
