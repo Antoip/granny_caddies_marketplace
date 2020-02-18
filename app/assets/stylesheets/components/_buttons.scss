@@ -1,0 +1,13 @@
+.btn-perso {
+  border-radius: 10px;
+  background: transparent;
+  color: rgb(196, 150, 206);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(196, 150, 206);
+
+  &:hover {
+    background: rgb(196, 150, 206);
+    color: white;
+  }
+}
