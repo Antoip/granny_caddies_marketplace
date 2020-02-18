@@ -97,5 +97,3 @@ reviews_attributes = []
 end
 
 
-
-
