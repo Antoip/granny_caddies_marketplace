@@ -1,7 +1,18 @@
 <h1>Caddies#show</h1>
 <p>Find me in app/views/caddies/show.html.erb</p>
 
-
+<% if @caddie.reviews.empty? %>
+   <p>Il n'y a pas de review pour cet article</p>
+<% else %>
+  <% @caddie.reviews.each do |review| %>
+    <div>
+      <%= review.rating %>
+    </div>
+    <div>
+      <%= review.description %>
+    </div>
+  <% end %>
+<% end %>
 
 <%= cl_image_tag @caddie.photo.key, height: 300, width: 400, crop: :fill %>
 
