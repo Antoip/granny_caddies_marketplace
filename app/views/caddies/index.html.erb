@@ -13,7 +13,9 @@
       <div class="card">
         <img src="https://image.darty.com/darty?type=image&source=/market/2017/06/28/mkp_qX2QqqJL0Cc06g.jpeg&width=400&height=300&quality=70" />
         <div class="home-card-title">
-          <h2><%= caddy.name %></h2>
+          <%= link_to caddy_path(caddy) do %>
+            <h2><%= caddy.name %></h2>
+          <% end %>
         </div>
         <div class="home-card-text">
           <p>Condition : <%=caddy.condition %></p>
