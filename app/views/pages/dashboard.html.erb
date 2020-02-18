@@ -1,0 +1,118 @@
+<div class="container mt-3 mb-5">
+  <div>
+    <h2>Your Caddies</h2>
+    <div class="accordion d-flex flex-column align-items-center" id="accordionCaddies">
+      <% i=1 %>
+      <% Caddie.where(user_id: current_user).each do |caddie| %>
+      <% i+=1 %>
+      <div class="card borders w-75">
+        <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
+          <h2 class="mb-0">
+            <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
+              <%= caddie.name.capitalize %>
+            </button>
+          </h2>
+          <div class="d-flex align-items-center">
+            <% if caddie.availability %>
+              <i class="fas fa-circle available"></i>
+            <% else %>
+              <i class="fas fa-circle unavalable"></i>
+            <% end %>
+            <div class="btn btn-perso2 ml-3">
+            <% if caddie.availability %>
+              Make unavailable
+            <% else %>
+              Make available
+            <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
+          <div class="card-body d-flex position-relative">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="card-product-infos">
+                <ul><strong>Product overview :</strong>
+                  <li>Condition : <%= caddie.condition %></li>
+                  <li>Number of wheels : <%= caddie.wheels_number %></li>
+                  <li>Capacity : <%= caddie.capacity %></li>
+                </ul>
+                <div class="badge badge-secondary price"><%= caddie.price %> €</div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-6 mt-5">
+  <h2>Your bookings to come</h2>
+    <div class="accordion d-flex flex-column align-items-center" id="accordionCaddies">
+      <% i=100 %>
+      <% today = Date.today %>
+      <% Booking.where(user_id: current_user).where("start_date > 'today'").each do |booking| %>
+      <% i+=1 %>
+      <div class="card borders w-100">
+        <div class="card-header d-flex justify-content-between" id="heading<%= i %>">
+          <h2 class="mb-0">
+            <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
+              <%= booking.caddie.name.capitalize %>
+            </button>
+          </h2>
+            <div class="btn btn-perso2">Cancel</div>
+        </div>
+
+        <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
+          <div class="card-body d-flex position-relative">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="card-product-infos">
+                <ul><strong>Booking overview :</strong>
+                  <li>Start date : <%= booking.start_date %></li>
+                  <li>End date : <%= booking.end_date %></li>
+                  <li>Price : <%= booking.price %> €</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-6 mt-5">
+    <h2>Your previous orders</h2>
+    <div class="accordion d-flex flex-column align-items-center" id="accordionCaddies">
+      <% i=200 %>
+      <% today = Date.today %>
+      <% Booking.where(user_id: current_user).where("end_date < 'today'").each do |booking| %>
+      <% i+=1 %>
+      <div class="card borders w-100">
+        <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
+          <h2 class="mb-0">
+            <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
+              <%= booking.caddie.name.capitalize %>
+            </button>
+          </h2>
+          <%= link_to "Rate it!", new_booking_review_path(booking), class: "btn btn-perso2"  %>
+        </div>
+
+        <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
+          <div class="card-body d-flex position-relative">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="card-product-infos">
+                <ul><strong>Booking overview :</strong>
+                  <li>Start date : <%= booking.start_date %></li>
+                  <li>End date : <%= booking.end_date %></li>
+                  <li>Price : <%= booking.price %> €</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>

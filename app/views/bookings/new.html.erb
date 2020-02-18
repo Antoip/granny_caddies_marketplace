@@ -1,9 +1,9 @@
 <div class="new-booking-container">
   <h1>Booking a Caddie</h1>
   <div class="caddie-details">
-    <%= @caddie.name %>
-    <%= @caddie.condition %>
-    <%= @caddie.wheels_number %> wheels
+    <p><%= @caddie.name %></p>
+    <p><%= @caddie.condition %></p>
+    <p><%= @caddie.wheels_number %> wheels</p>
     <div class="booking-price">
       <p class="price" data-price="10"><%= @caddie.price %></p>$
     </div>
@@ -14,6 +14,7 @@
     <%= simple_form_for [@caddie, @booking] do |f| %>
       <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker start-date"} %>
       <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker end-date"} %>
+      <%= f.input :price, as: :hidden, :input_html => { :value => @caddie.price } %>
       <%= f.button :submit, "Go", class: "btn btn-primary" %>
     <% end %>
   </div>
