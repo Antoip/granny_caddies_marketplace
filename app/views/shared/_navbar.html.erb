@@ -1,6 +1,6 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand avatar" href="#">
+  <a class="navbar-brand avatar" href="/">
     <img src="https://www.pngkit.com/png/full/300-3001544_download-granny-icon-grandmother-images-clip-art.png" />
 </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,22 +10,34 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link color-secondary mr-3" href="#">Add a Caddie</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link color-secondary mr-3" href="#">Rent a Caddie</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link color-secondary mr-4" href="#">My Caddies</a>
-      </li>
-      <li class="nav-item dropdown">
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/full/300-3001544_download-granny-icon-grandmother-images-clip-art.png" />
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">My Profile</a>
-          <a class="dropdown-item" href="#">Log out</a>
-        </div>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <a class="nav-link color-secondary mr-3" href="/caddies/new">Add a Caddie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link color-secondary mr-3" href="#">Rent a Caddie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link color-secondary mr-4" href="/dashboard">My Caddies</a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a class="mr-4"><%= current_user.email %></a>
+        </li>
+        <li class="nav-item dropdown">
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/dashboard">My Profile</a>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item mr-3">
+          <a class="nav-link" id="color1" href="/users/sign_up">Sign up</a>
+        </li>
+        <li class="nav-item mr-3">
+          <a class="nav-link" id="color2" href="/users/sign_in">Sign in</a>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
