@@ -19,7 +19,8 @@
 require 'faker'
 
 
-
+puts 'Cleaning database...'
+Booking.delete_all
 
 puts 'Cleaning database...'
 Caddie.delete_all
@@ -27,8 +28,7 @@ Caddie.delete_all
 puts 'Cleaning database...'
 User.delete_all
 
-puts 'Cleaning database...'
-Booking.delete_all
+
 
 puts 'Cleaning database...'
 Review.delete_all
@@ -37,7 +37,7 @@ Review.delete_all
 
 users_attributes = []
 
-10.times do
+50.times do
   users_attributes << User.create(
     email: Faker::Internet.email,
     encrypted_password: Faker::Internet.password,
@@ -59,7 +59,7 @@ caddies_attributes = []
 myCondition = [ "New", "Bad Condition", "Perfect Condition" ]
 
 
- 100.times do
+ 200.times do
 
  caddies_attributes << Caddie.create(
   name: Faker::Dessert.flavor,
@@ -79,12 +79,29 @@ lastCaddie = Caddie.last.id
 
 bookings_attributes = []
 
-200.times do
+400.times do
   bookings_attributes << Booking.create(
     start_date: Faker::Date.forward(days: rand(1..30)),
     end_date: Faker::Date.backward(days: rand(31..60)),
     caddie: Caddie.find(rand(firstCaddie..lastCaddie)),
     user: User.find(rand(first..last))
+    )
+
+end
+
+
+#Reviews
+
+firstBooking = Booking.first.id
+lastBooking = Booking.last.id
+
+reviews_attributes = []
+
+500.times do
+  reviews_attributes << Review.create(
+    description: Faker::Restaurant.description,
+    rating: rand(1..5),
+    booking: Booking.find(rand(firstBooking..lastBooking))
     )
 
 end
