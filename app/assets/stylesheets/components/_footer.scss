@@ -1,0 +1,47 @@
+.footer {
+  height: 300px;
+  background-color: #6A93F5;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  p {
+    font-size: 12px;
+  }
+  .footer-navigation {
+    width: 90%;
+    font-size: 16px;
+    display: flex;
+    ul {
+      list-style-type: none;
+      margin: 16px auto;
+      padding: 0px;
+    }
+    a {
+      text-decoration: none;
+      color: white
+    }
+  }
+}
+
+.company-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.social-medias-logos {
+  display: flex;
+  justify-content: space-around;
+  a {
+    font-size: 36px;
+    text-decoration: none;
+    color: white
+  }
+}
+
+.company-social-media {
+  width: 50%;
+  text-align: center;
+}
