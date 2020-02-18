@@ -4,6 +4,7 @@
   opacity: 1;
   width: 100%;
   border-radius: 5px;
+  color: $light-purple;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -49,6 +50,7 @@ border-bottom-color: $light-purple ;
   -webkit-transition: -webkit-transform .8s ease-in-out;
           transition:         transform .8s ease-in-out;
 }
+
 .logo-anim:hover {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);

@@ -5,9 +5,35 @@
   border-style: solid;
   border-width: 1px;
   border-color: rgb(196, 150, 206);
+  display:flex;
+  align-items: center;
 
   &:hover {
     background: rgb(196, 150, 206);
     color: white;
   }
+}
+
+.btn-perso2 {
+  border-radius: 10px;
+  background: white;
+  color: rgb(196, 150, 206);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(196, 150, 206);
+  display:flex;
+  align-items: center;
+
+  &:hover {
+    background: rgb(196, 150, 206);
+    color: white;
+  }
+}
+
+.available {
+  color: rgb(21, 188, 18);
+}
+
+.unavailable {
+  color: rgb(201, 8, 8);
 }

@@ -11,23 +11,24 @@
   <div class="cards">
     <% @caddies.each do |caddy| %>
       <div class="card">
-        <img src="https://image.darty.com/darty?type=image&source=/market/2017/06/28/mkp_qX2QqqJL0Cc06g.jpeg&width=400&height=300&quality=70" />
-        <div class="home-card-title">
-          <%= link_to caddy_path(caddy) do %>
+        <%= link_to caddy_path(caddy), style:'text-decoration:none; color: #727071' do %>
+          <img src="https://image.darty.com/darty?type=image&source=/market/2017/06/28/mkp_qX2QqqJL0Cc06g.jpeg&width=400&height=300&quality=70" />
+          <div class="home-card-title">
             <h2><%= caddy.name %></h2>
-          <% end %>
-        </div>
-        <div class="home-card-text">
-          <p>Condition : <%=caddy.condition %></p>
-          <p> Nombre de roues : <%= caddy.wheels_number %></p>
-          <p> Capacity : <%= caddy.capacity %></p>
-        </div>
+          </div>
+          <div class="home-card-text">
+            <p>Condition : <%=caddy.condition %></p>
+            <p> Nombre de roues : <%= caddy.wheels_number %></p>
+            <p> Capacity : <%= caddy.capacity %></p>
+            <p class="price" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
   <div
     id="map"
-    style="width: 500px; height: 100vh; background-color: #6A93F5;"
-  ></div>
+    style="width: 500px; height: 100vh; position: sticky; top:0; background-size: cover; overflow: hidden;">
+  <img src="https://planmetro.paris/wp-content/uploads/2015/10/paris-map.jpg" alt="map temporaire">
+  </div>
 </div>
-
