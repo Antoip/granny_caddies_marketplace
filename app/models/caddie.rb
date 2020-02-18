@@ -8,4 +8,11 @@ class Caddie < ApplicationRecord
   validates :condition, presence: true
   validates :wheels_number, presence: true, numericality: { only_integer: true, less_than: 8 }
   validates :capacity, presence: true
+
+  CONDITIONS = ["1 - It barely rolls anymore",
+                "2 - It smells a bit like fish but it is ok",
+                "3 - It rolls and that's already a lot",
+                "4 - It is a radiant racing caddie"]
+  WHEELS_NUMBER = (2..7).to_a
+  CAPACITY = (1..20).to_a
 end
