@@ -25,7 +25,8 @@
     <div class="spacer"></div>
     <div class="owner-details-container">
       <div class="caddie-details-card">
-        <%= cl_image_tag @caddie.user.photo.key, height: 60, width: 30, class: "avatar owner-picture" %>
+        <img class="avatar owner-picture" src="<%= arrayPhoto[rand(1..12)] %>" alt="User Photo">
+
 
         <div class="owner-details-card">
           <p><%= @caddie.user.email %></p>
