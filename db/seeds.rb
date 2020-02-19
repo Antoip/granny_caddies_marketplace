@@ -45,7 +45,7 @@ end
 
 caddies_attributes = []
 
-my_condition = [ "New", "Bad Condition", "Perfect Condition" ]
+
 
 
 # 5.times do
@@ -90,15 +90,18 @@ my_condition = [ "New", "Bad Condition", "Perfect Condition" ]
 # end
 
 
+
+
+
 caddie = Caddie.create(
   name:          "Chariot mémé",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It is a radiant racing caddie",
   description:   "wonderful red trolley with leather handle never used",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         15,
   address: "2 Avenue des Saules, Lomme"
 )
 
@@ -112,12 +115,12 @@ caddie.photo.attach(io: file, filename: 'chariot.jpg', content_type: 'image/png'
 caddie1 = Caddie.create(
   name:          "Trolly",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It rolls and that's already a lot",
   description:   "flower pattern trolley with metal frame",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         12,
   address: "10 rue Danielle Casanova, Paris"
 )
 
@@ -132,12 +135,12 @@ caddie1.photo.attach(io: file, filename: 'trolly.jpg', content_type: 'image/png'
 caddie2 = Caddie.create(
   name:          "Classy caddie",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It rolls and that's already a lot",
   description:   "Great grey caddie with metallic frame",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         13,
   address: "10 Rue Arthur Herchen, Luxembourg"
 )
 
@@ -149,12 +152,12 @@ caddie2.photo.attach(io: file, filename: 'classy_caddie.jpg', content_type: 'ima
 caddie3 = Caddie.create(
   name:          "Reddy MacRed",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It is a radiant racing caddie",
   description:   "new design trolley with increased capacity",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         14,
   address: "23 Rue Arthur Herchen, Luxembourg"
 )
 
@@ -166,12 +169,12 @@ caddie3.photo.attach(io: file, filename: 'red.jpg', content_type: 'image/png')
 caddie4 = Caddie.create(
   name:          "Floflo",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It smells a bit like fish but it is ok",
   description:   "3years old flower pattern trolley really good for stairs",
   wheels_number: 6,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         7,
   address: "40 Botestraat ,Gand"
 )
 
@@ -184,12 +187,12 @@ caddie4.photo.attach(io: file, filename: 'floflo.jpg', content_type: 'image/png'
 caddie5 = Caddie.create(
   name:          "Techno caddie",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It rolls and that's already a lot",
   description:   "techno pattern kart for youngsters",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         11,
   address: "40 Botestraat ,Gand"
 )
 
@@ -201,12 +204,13 @@ caddie5.photo.attach(io: file, filename: 'techno.jpg', content_type: 'image/png'
 caddie6 = Caddie.create(
   name:          "Dalmatians",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It is a radiant racing caddie",
   description:   "High Capacity trolley brand new with extra pockets dalmatians patterns",
   wheels_number: 6,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         16,
+  address: "112 rue du noyer, Bruxelles"
 )
 
 file = URI.open('https://www.sedao.com/891467-12950/chariot-de-courses.jpg')
@@ -217,12 +221,13 @@ caddie6.photo.attach(io: file, filename: 'dalmatians.jpg', content_type: 'image/
 caddie7 = Caddie.create(
   name:          "Summer Picnic",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It barely rolls anymore",
   description:   "6 wheels summer trolley with a chair in addition",
   wheels_number: 6,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         4,
+  address: "65 Route de Guentrange,  Thionville"
 )
 
 file = URI.open('https://www.cote-eden.com/pub/Courses/chariot_course_1206_1.jpg')
@@ -233,12 +238,13 @@ caddie7.photo.attach(io: file, filename: 'summer.jpg', content_type: 'image/png'
 caddie8 = Caddie.create(
   name:          "Freezer black",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It barely rolls anymore",
   description:   "black trolley ideal to keep food cold",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         6,
+  address: "75 Rue Réaumur, Paris"
 )
 
 file = URI.open('https://m.media-amazon.com/images/I/41ES2VFyIOL.jpg')
@@ -249,12 +255,13 @@ caddie8.photo.attach(io: file, filename: 'freezer.jpg', content_type: 'image/png
 caddie9 = Caddie.create(
   name:          "80's caddies",
   availability:  Faker::Boolean.boolean,
-  condition:     my_condition.sample,
+  condition:     "It is a radiant racing caddie",
   description:   "red and white caddie old fashioned used only few times",
   wheels_number: 2,
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
-  price:         rand(1..100)
+  price:         14,
+  address: "32 rue de longchamps, Paris"
 )
 
 file = URI.open('https://www.luckyfind.fr/sites/luckyfind/files/classifieds/055824-5bab5c8f81ee0-5bab5c2abf01c-100_7775.jpg')
