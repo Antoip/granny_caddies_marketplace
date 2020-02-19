@@ -14,7 +14,13 @@
         <img class="avatar owner-picture"  aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
         <div class="owner-details-card">
           <p><%= @caddie.user.email %></p>
-          <p>User Rating</p>
+          <div class="review-stars">
+            <% unless @caddie.user.rating.empty? %>
+              <% @caddie.user.rating.first.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
 

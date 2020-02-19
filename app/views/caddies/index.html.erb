@@ -7,14 +7,14 @@
   </div>
 </div>
 
-<div class="container-index id="home-card-list">
+<div class="container-index" id="home-card-list">
   <div class="cards-mf">
     <% @caddies.each do |caddy| %>
       <div class="card-mf">
         <%= link_to caddy_path(caddy), style:'text-decoration:none; color: #727071' do %>
-        <% if  caddy.photo.attached? %>
-          <%= cl_image_tag caddy.photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
+          <% if caddy.photo.attached? %>
+            <%= cl_image_tag caddy.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
           <div class="home-card-title">
             <h2><%= caddy.name %></h2>
           </div>
