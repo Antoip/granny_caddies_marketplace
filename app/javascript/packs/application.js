@@ -6,3 +6,5 @@ import "../bookings/new"
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 initUpdateNavbarOnScroll();
+
+import "../components/footer"
