@@ -5,11 +5,32 @@
   width: 100%;
   border-radius: 5px;
   color: $light-purple;
+
 }
+
+li.nav-item {
+  opacity: 0.8;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+
+  &:hover {
+    border-bottom-color: $light-purple ;
+  }
+}
+
+// .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+//   color: rgb(255, 255, 255);
+// }
 
 .navbar-lewagon-white {
   background-color: white;
 }
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -43,11 +64,6 @@
     color: $dark-purple ;
   }
 }
-
-.nav-link:hover {
-border-bottom-color: $light-purple ;
-}
-
 
 .logo-anim {
   border-radius: 50%;
