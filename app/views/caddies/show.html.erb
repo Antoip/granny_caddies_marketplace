@@ -2,7 +2,7 @@
   <div class="show-title-ribbon">
     <div class="spacer"></div>
     <h1><%= @caddie.name %></h1>
-    <div class="caddie-picture"><img src="https://www.jardinetsaisons.fr/1141-thickbox_default/poussette-de-marche-isotherme-6-roues.jpg" alt=""></div>
+    <div class="caddie-picture"><%= cl_image_tag @caddie.photo.key, height: 500, width: 400, crop: :fill %></div>
   </div>
 
 
@@ -25,7 +25,8 @@
           <li>Capacity : <%= @caddie.capacity %></li>
         </ul>
         <p style="font-size: 18px;" class="mt-4"><strong>Description</strong></p>
-        <p class="mt-3"><%= @caddie.description %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni similique amet impedit totam voluptatem consequuntur odit a, saepe repudiandae! Amet perferendis impedit iste velit eos debitis dicta nesciunt accusantium officia.</p>
+        <p class="mt-3"><%= @caddie.description %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni similique amet impedit totam voluptatem consequuntur odit a, saepe repudiandae! Amet perferendis impedit iste velit eos debitis dicta nesciunt accusantium officia.
+        </p>
       </div>
     </div>
   </div>
@@ -36,17 +37,27 @@
   </div>
   <div class="caddie-booking-reviews">
     <h3>Reviews</h3>
-    <div class="review-container">
+    <div class="review-container mt-4">
       <% if @caddie.reviews.empty? %>
         <p>Il n'y a pas de review pour cet article</p>
       <% else %>
         <% @caddie.reviews.each do |review| %>
-          <div>
-            <%= review.rating %>
+          <div class="review-card">
+            <div class="review-author">
+              <img class="avatar owner-picture"  aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
+              <p class="owner-details-card"><%= review.booking.user.email %></p>
+            </div>
+
+            <div class="review-block">
+              <div class="review-stars">
+                <% review.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              </div>
+              <p class="review-content"><%= review.description %></p>
+            </div>
           </div>
-          <div>
-            <%= review.description %>
-          </div>
+
         <% end %>
       <% end %>
     </div>
