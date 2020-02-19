@@ -10,14 +10,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link mr-3" href="/caddies/new">Add a Caddie</a>
+          <li class="nav-item <%= 'active' if current_page?(new_caddy_path) %>">
+            <%= link_to "Add a Caddie", new_caddy_path, class: "nav-link mr-3" %>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link mr-3" href="/caddies#home-card-list">Rent a Caddie</a>
+          <li class="nav-item <%= 'active' if current_page?(caddies_path) %>">
+            <%= link_to "Rent a Caddie", caddies_path(anchor: 'home-card-list'), class: "nav-link mr-3" %>
           </li>
-          <li class="nav-item">
-            <a class="nav-link mr-4" href="/dashboard">My Caddies</a>
+          <li class="nav-item <%= 'active' if current_page?(dashboard_path) %>  ">
+            <%= link_to "My Caddies", dashboard_path, class: "nav-link mr-4" %>
           </li>
           <li class="nav-item d-flex align-items-center">
             <a class="mr-4"><%= current_user.email %></a>
