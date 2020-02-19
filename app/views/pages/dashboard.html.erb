@@ -51,7 +51,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 mt-5">
+    <div class="col-6 mt-5" id="booking-to-come-height">
       <h2>Your bookings to come</h2>
       <% if Booking.where(user_id: current_user).where("start_date > 'today'").empty? %>
         <%= "You don't have any booking to come..." %>
