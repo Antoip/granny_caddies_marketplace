@@ -7,10 +7,10 @@
   </div>
 </div>
 
-<div class="container-index" id="home-card-list">
-  <div class="cards">
+<div class="container-index id="home-card-list">
+  <div class="cards-mf">
     <% @caddies.each do |caddy| %>
-      <div class="card">
+      <div class="card-mf">
         <%= link_to caddy_path(caddy), style:'text-decoration:none; color: #727071' do %>
         <%= cl_image_tag caddy.photo.key, height: 300, width: 400, crop: :fill %>
           <div class="home-card-title">
@@ -20,7 +20,7 @@
             <p>Condition : <%=caddy.condition %></p>
             <p> Nombre de roues : <%= caddy.wheels_number %></p>
             <p> Capacity : <%= caddy.capacity %></p>
-            <p class="price" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
+            <p class="price-mf" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
           </div>
         <% end %>
       </div>
