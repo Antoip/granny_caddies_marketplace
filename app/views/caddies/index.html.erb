@@ -7,12 +7,12 @@
   </div>
 </div>
 
-<div class="container-index">
+<div class="container-index" id="home-card-list">
   <div class="cards">
     <% @caddies.each do |caddy| %>
       <div class="card">
         <%= link_to caddy_path(caddy), style:'text-decoration:none; color: #727071' do %>
-          <img src="https://image.darty.com/darty?type=image&source=/market/2017/06/28/mkp_qX2QqqJL0Cc06g.jpeg&width=400&height=300&quality=70" />
+        <%= cl_image_tag caddy.photo.key, height: 300, width: 400, crop: :fill %>
           <div class="home-card-title">
             <h2><%= caddy.name %></h2>
           </div>
