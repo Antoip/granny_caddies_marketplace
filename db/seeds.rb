@@ -99,6 +99,7 @@ caddie = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         rand(1..100)
+  address: "2 Avenue des Saules, Lomme"
 )
 
 file = URI.open('https://www.cdiscount.com/pdt2/8/3/6/1/700x700/tec4260397657836/rw/caddie-de-courses-chariot-de-courses-chariot-de.jpg')
@@ -117,6 +118,7 @@ caddie1 = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         rand(1..100)
+  address: "10 rue Danielle Casanova, Paris"
 )
 
 file = URI.open('https://medias.pylones.com/10371-thickbox_default/caddie-de-courses-trolly.jpg')
@@ -136,6 +138,7 @@ caddie2 = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         rand(1..100)
+  address: "10 Rue Arthur Herchen, Luxembourg"
 )
 
 file = URI.open('https://www.cdiscount.com/pdt2/0/6/9/1/700x700/son6955880358069/rw/songmics-chariot-de-courses-caddie-de-courses-pli.jpg')
@@ -152,6 +155,7 @@ caddie3 = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         rand(1..100)
+  address: "23 Rue Arthur Herchen, Luxembourg"
 )
 
 file = URI.open('https://www.facilavi.com/3183-large_default/caddie-de-courses-go-fun.jpg')
@@ -168,6 +172,7 @@ caddie4 = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         rand(1..100)
+  address: "40 Botestraat ,Gand"
 )
 
 file = URI.open('https://www.cdiscount.com/pdt2/6/9/6/1/1200x1200/wed3701095707696/rw/chariot-de-course-poussette-de-marche-isotherme-6.jpg')
@@ -185,6 +190,7 @@ caddie5 = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         rand(1..100)
+  address: "40 Botestraat ,Gand"
 )
 
 file = URI.open('https://awaxland.com/wp-content/uploads/2016/12/IMG_3601.jpg')
