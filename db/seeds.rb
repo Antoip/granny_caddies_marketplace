@@ -268,28 +268,207 @@ file = URI.open('https://www.luckyfind.fr/sites/luckyfind/files/classifieds/0558
 caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
 
 
-
  Bookings
 
  firstCaddie = Caddie.first.id
  lastCaddie = Caddie.last.id
 
+ arrayCaddieID = (firstCaddie..lastCaddie).to_a
+
+ firstCaddiePrice = Caddie.first.price
+ lastCaddiePrice = Caddie.last.price
+
+ arrayCaddiePrice = (firstCaddiePrice..lastCaddiePrice).to_a
+
  bookings_attributes = []
 
- 20.times do
    bookings_attributes << Booking.create(
-     start_date: Faker::Date.forward(days: rand(1..30)),
-     end_date: Faker::Date.backward(days: rand(31..60)),
-     caddie: Caddie.first,
-     user: User.find(rand(first..last))
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[0]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[0]).price
      )
 
- end
+
+   bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[1]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[1]).price
+     )
+
+      bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[2]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[2]).price
+     )
+    bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[3]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[3]).price
+     )
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[4]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[4]).price
+     )
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[5]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[5]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[6]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[6]).price
+     )
+
+
+
+     bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[7]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[7]).price
+     )
+
+
+     bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[8]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[8]).price
+     )
+
+     bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[0]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[0]).price
+     )
+
+         bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[1]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[1]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[2]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[2]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[3]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[3]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[4]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[4]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[5]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[5]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[6]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[6]).price
+     )
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[7]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[7]).price
+     )
+
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[8]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[8]).price
+     )
+
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[0]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[0]).price
+     )
+
+
+
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: rand(1..30)),
+     end_date: Faker::Date.forward(days: rand(1..30)),
+     caddie: Caddie.find(arrayCaddieID[1]),
+     user: User.find(rand(first..last)),
+     price: Caddie.find(arrayCaddieID[1]).price
+     )
+
+
+
+
 
  #Reviews
 
  firstBooking = Booking.first.id
  lastBooking = Booking.last.id
+
+ arrayBooking = (firstBooking..lastBooking).to_a
+
 
  reviews_attributes = []
 
@@ -297,7 +476,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "really bad experience, wheel was broken",
      rating: 1,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[0])
      )
 
 
@@ -306,7 +485,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "perfect, nothing to add",
      rating: 5,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[1])
      )
 
 
@@ -314,7 +493,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "Helping me a lot carry my groceries",
      rating: 4,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[2])
      )
 
 
@@ -322,7 +501,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "it was ok",
      rating: 3,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[3])
      )
 
 
@@ -330,7 +509,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "would definitely recommend to a granny",
      rating: 5,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[4])
      )
 
 
@@ -338,7 +517,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "too expensive",
      rating: 3,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[5])
      )
 
 
@@ -346,7 +525,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "not my style but definitely worthit",
      rating: 4,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[6])
      )
 
 
@@ -355,7 +534,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "a little too heavy for an oldy like me",
      rating: 3,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[7])
      )
 
 
@@ -364,7 +543,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "...",
      rating: 3,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[8])
      )
 
 
@@ -373,7 +552,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "fabulous love it",
      rating: 5,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[9])
      )
 
 
@@ -382,7 +561,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "handle doesn't have a good grip",
      rating: 3,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[10])
      )
 
 
@@ -391,7 +570,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "nice concept and trolley",
      rating: 4,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[11])
      )
 
 
@@ -399,7 +578,7 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
    reviews_attributes << Review.create(
      description: "want to buy one now",
      rating: 5,
-     booking: Booking.find(rand(firstBooking..lastBooking))
+     booking: Booking.find(arrayBooking[12])
      )
 
 
