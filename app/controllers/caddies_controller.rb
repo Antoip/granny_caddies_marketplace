@@ -18,8 +18,6 @@ class CaddiesController < ApplicationController
   def create
     @caddie = Caddie.new(caddie_params)
     @caddie.user = current_user
-
-    raise
     if @caddie.save
       redirect_to caddy_path(@caddie)
     else
