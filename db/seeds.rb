@@ -22,20 +22,126 @@ puts 'Cleaning database...'
 User.delete_all
 
 
-
+#arrayPhoto = ['https://images.unsplash.com/photo-1544703432-78fe9ba48d4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1571512599285-9ac4fdf3dba9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+#  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/flagged/photo-1570084787226-c77bdc6a1705?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1547212371-eb5e6a4b590c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1508216404415-a35220fab80e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1551108168-229956dd31bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1568386562062-e03c15641420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+#  'https://images.unsplash.com/photo-1575879722495-9b0e524e39e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1563405614130-5a4b326051ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1579626379295-2b3a2dd7cbc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+#  'https://images.unsplash.com/photo-1575075500178-c99ef905661a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60']
 
 # Users
 
+ #arrayPhoto = []
+
 users_attributes = []
 
-5.times do
-  users_attributes << User.create(
-    email: Faker::Internet.email,
+
+    user =  User.create(
+    email: 'jerome@hotmail.fr',
     encrypted_password: Faker::Internet.password,
     password: Faker::Internet.password
     )
+  file = URI.open('https://images.unsplash.com/photo-1544703432-78fe9ba48d4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+  user.photo.attach(io: file, filename: 'user.jpg', content_type: 'image/png')
 
-end
+
+
+    user1 =  User.create(
+    email: 'jean.claude@gmail.com',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1571512599285-9ac4fdf3dba9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+  user&.photo.attach(io: file, filename: 'user1.jpg', content_type: 'image/png')
+
+
+
+    user2 =  User.create(
+    email: 'myriam@lewagon.io',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')
+  user2.photo.attach(io: file, filename: 'user2.jpg', content_type: 'image/png')
+
+
+
+
+    user3 =  User.create(
+    email: 'lea@gmail.fr',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+  user3.photo.attach(io: file, filename: 'user3.jpg', content_type: 'image/png')
+
+
+
+
+    user4 =  User.create(
+    email: 'ertrude@coolmamie.io',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/flagged/photo-1570084787226-c77bdc6a1705?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+  user4.photo.attach(io: file, filename: 'user4.jpg', content_type: 'image/png')
+
+
+
+    user5 =  User.create(
+    email: 'samira@yahoo.com',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1547212371-eb5e6a4b590c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+  user5.photo.attach(io: file, filename: 'user5.jpg', content_type: 'image/png')
+
+
+
+
+    user6 =  User.create(
+    email: 'rodrigo@gmail.fr',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1568386562062-e03c15641420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')
+  user6.photo.attach(io: file, filename: 'user6.jpg', content_type: 'image/png')
+
+
+
+    user7 =  User.create(
+    email: 'tutur@hotmail.com',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1575879722495-9b0e524e39e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+  user7.photo.attach(io: file, filename: 'user7.jpg', content_type: 'image/png')
+
+
+
+    user8 =  User.create(
+    email: 'lena@gmail.com',
+    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password
+    )
+  file = URI.open('https://images.unsplash.com/photo-1575075500178-c99ef905661a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
+  user8.photo.attach(io: file, filename: 'user8.jpg', content_type: 'image/png')
+
+
+
+
+#  # array.delete(sample)
+#   caddie.photo.attach(io: file, filename: "#{file.scan(/.{10}$/)}",content_type: 'image/jpg')
+#   caddie.save!
+
 
 
 # Caddies
@@ -548,42 +654,31 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
 
 
 
-
    reviews_attributes << Review.create(
-     description: "fabulous love it",
-     rating: 5,
+     description: "...",
+     rating: 3,
      booking: Booking.find(arrayBooking[9])
      )
 
 
 
-
    reviews_attributes << Review.create(
-     description: "handle doesn't have a good grip",
+     description: "...",
      rating: 3,
      booking: Booking.find(arrayBooking[10])
      )
 
-
-
-
    reviews_attributes << Review.create(
-     description: "nice concept and trolley",
-     rating: 4,
+     description: "...",
+     rating: 3,
      booking: Booking.find(arrayBooking[11])
      )
 
-
-
    reviews_attributes << Review.create(
-     description: "want to buy one now",
-     rating: 5,
+     description: "...",
+     rating: 3,
      booking: Booking.find(arrayBooking[12])
      )
-
-
-
-
 
 
 #photos cloudinary
