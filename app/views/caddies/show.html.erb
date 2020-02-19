@@ -5,13 +5,28 @@
     <div class="caddie-picture"><%= cl_image_tag @caddie.photo.key, height: 500, width: 400, crop: :fill %></div>
   </div>
 
+<% arrayPhoto = ['https://images.unsplash.com/photo-1544703432-78fe9ba48d4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1571512599285-9ac4fdf3dba9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/flagged/photo-1570084787226-c77bdc6a1705?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1547212371-eb5e6a4b590c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1508216404415-a35220fab80e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1551108168-229956dd31bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1568386562062-e03c15641420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+  'https://images.unsplash.com/photo-1575879722495-9b0e524e39e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1563405614130-5a4b326051ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1579626379295-2b3a2dd7cbc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1575075500178-c99ef905661a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'] %>
+
 
   <div class="caddie-details-show">
     <div class="spacer"></div>
-
     <div class="owner-details-container">
       <div class="caddie-details-card">
-        <img class="avatar owner-picture"  aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
+        <img class="avatar owner-picture" <%= cl_image_tag @caddie.user.photo.key, height: 60, width: 30 %>
+
         <div class="owner-details-card">
           <p><%= @caddie.user.email %></p>
           <div class="review-stars">
@@ -52,7 +67,7 @@
         <% @caddie.reviews.each do |review| %>
           <div class="review-card">
             <div class="review-author">
-              <img class="avatar owner-picture"  aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200" />
+              <img class="avatar owner-picture"  aria-haspopup=“true” aria-expanded=“false” src="<%=  arrayPhoto[rand(1..12)] %>" />
               <p class="owner-details-card"><%= review.booking.user.email %></p>
             </div>
 
