@@ -1,6 +1,6 @@
 const startDate = document.querySelector(".start-date")
 const endDate = document.querySelector(".end-date")
-const price = document.querySelector(".price")
+const price = document.querySelector(".price-antoine")
 
 if (startDate) {
   startDate.addEventListener("change", (event) => {
