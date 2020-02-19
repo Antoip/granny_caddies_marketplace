@@ -4,6 +4,14 @@ class CaddiesController < ApplicationController
 
   def index
     @caddies = Caddie.all
+    @caddies_geo = Caddie.geocoded
+    @markers = @caddies_geo.map do |caddie|
+      {
+        lat: caddie.latitude,
+        lng: caddie.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
+      }
+    end
   end
 
   def show
