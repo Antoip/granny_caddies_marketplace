@@ -7,12 +7,14 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @caddie = Caddie.find(params[:caddy_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.caddie = Caddie.find(params[:caddy_id])
+    @booking.caddie = @caddie
     if @booking.save
       redirect_to dashboard_path
     else
+      raise
       render :new
     end
   end
