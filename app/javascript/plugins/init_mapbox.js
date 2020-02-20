@@ -6,6 +6,7 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
+
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
@@ -13,7 +14,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/martinoh/ck6ulex5w1q5l1ip9nue6b375'
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {

@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard", to: "pages#dashboard"
-  resources :bookings, only: :delete
+  resources :bookings, only: :destroy
 end

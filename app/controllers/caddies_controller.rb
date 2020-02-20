@@ -4,7 +4,8 @@ class CaddiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @caddies = Caddie.all
+    # @caddies = Caddie.all
+    @caddies = Caddie.where(availability: true)
     @caddies_geo = Caddie.geocoded
     @markers = @caddies_geo.map do |caddie|
       {
@@ -38,12 +39,23 @@ class CaddiesController < ApplicationController
 
   def update
     if @caddie.update(caddie_params)
-      redirect_to caddy_path(@caddie)
+      redirect_to dashboard_path
     else
       render :edit
     end
   end
 
+  def update_availability
+    @caddie = Caddie.find(params[:id])
+    if @caddie.availability == true
+      @caddie.availability = false
+    else
+      @caddie.availability = true
+    end
+    @caddie.update({availability: @caddie.availability})
+    redirect_to dashboard_path
+  end
+    
   def destroy
     @caddie.delete
     redirect_to caddies_path
