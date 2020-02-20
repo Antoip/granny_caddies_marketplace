@@ -1,5 +1,6 @@
 class CaddiesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_caddie, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -16,7 +17,6 @@ class CaddiesController < ApplicationController
   end
 
   def show
-    @caddie = Caddie.find(params[:id])
     @review = Review.new
   end
 
@@ -35,10 +35,17 @@ class CaddiesController < ApplicationController
   end
 
   def edit
-    @caddie = Caddie.find(params[:id])
   end
 
   def update
+    if @caddie.update(caddie_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
+  end
+
+  def update_availability
     @caddie = Caddie.find(params[:id])
     if @caddie.availability == true
       @caddie.availability = false
@@ -48,8 +55,17 @@ class CaddiesController < ApplicationController
     @caddie.update({availability: @caddie.availability})
     redirect_to dashboard_path
   end
+    
+  def destroy
+    @caddie.delete
+    redirect_to caddies_path
+  end
 
   private
+
+  def set_caddie
+    @caddie = Caddie.find(params[:id])
+  end
 
   def caddie_params
     params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity, :price, :photo)
