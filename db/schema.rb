@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_105006) do
+ActiveRecord::Schema.define(version: 2020_02_20_135007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_105006) do
   create_table "caddies", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.string "condition"
     t.integer "wheels_number"
     t.integer "capacity"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2020_02_19_105006) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_caddies_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -90,5 +100,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_105006) do
   add_foreign_key "bookings", "caddies", column: "caddie_id"
   add_foreign_key "bookings", "users"
   add_foreign_key "caddies", "users"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "bookings"
 end
