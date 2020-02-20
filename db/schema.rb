@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_105006) do
   create_table "caddies", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.boolean "availability", default: true
+    t.boolean "availability"
     t.string "condition"
     t.integer "wheels_number"
     t.integer "capacity"
