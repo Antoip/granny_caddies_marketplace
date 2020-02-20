@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "pages#dashboard"
   resources :bookings, only: :destroy
+  patch "/caddies/:id/availability", to: "caddies#update_availability"
 end
