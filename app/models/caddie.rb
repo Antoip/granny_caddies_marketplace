@@ -29,4 +29,8 @@ class Caddie < ApplicationRecord
       availability = true
     end
   end
+
+  def caddie_notifications
+    # TODO
+  end
 end

@@ -1,11 +1,11 @@
 <div class="mt-5 notification-container">
   <h1>Notifications</h1>
-  <% if Notification.where(user_id: current_user).empty? %>
+  <% if current_user.notifications.empty? %>
     <%= "You don't have any notification yet" %>
   <% else %>
     <div class="notification-card d-flex flex-column align-items-center">
       <% i=1 %>
-      <% Notification.where(user_id: current_user).each do |notification| %>
+      <% current_user.notifications.each do |notification| %>
         <% i+=1 %>
         <div class="cardy borders w-75">
           <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
