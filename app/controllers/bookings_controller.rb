@@ -4,6 +4,13 @@ class BookingsController < ApplicationController
   def new
     @caddie = Caddie.find(params[:caddy_id])
     @booking = Booking.new
+    @bookings = Booking.where(caddie_id: @caddie.id)
+    @bookings_dates = @bookings.map do |booking|
+                        {
+                          from: booking.start_date,
+                          to:   booking.end_date
+                        }
+                      end
   end
 
   def create
