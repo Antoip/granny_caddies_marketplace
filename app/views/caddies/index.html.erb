@@ -1,22 +1,76 @@
+
+
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1509718497735-12d26d780d2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);">
   <div class="container">
     <h1><strong>CaddY'n'B</strong>!</h1>
     <p>
       <span id="banner-typed-text"></span>
     </p>
+
   </div>
-</div>
+<div class="filter-parameter d-flex">
 
 <div class="search-index">
+<label>Search your dream caddie:</label>
   <%= form_tag caddies_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: "Find a caddie"
+    placeholder: "Find a caddie:)"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 </div>
+
+<div class="slidecontainer">
+<label>Select the price:</label>
+<div>
+  <input type="range" min="0" max="30" value="15" class="slider" id="myRange">
+</div>
+<div>
+  <p id="demo"></p>
+</div>
+</div>
+
+<div class="checkbox">
+<label>Select the number of wheels:</label>
+<div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">3</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">4</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">5</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">6</label>
+</div>
+</div>
+</div>
+
+
+  </div>
+</div>
+
+
+
+
+
 
 <div class="container-index" id="home-card-list">
   <div class="cards-mf">
