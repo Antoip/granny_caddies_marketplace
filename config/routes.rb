@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'caddies#index'
   devise_for :users
 
@@ -21,4 +20,8 @@ Rails.application.routes.draw do
   resources :bookings, only: :destroy
   patch "/caddies/:id/availability", to: "caddies#update_availability"
   patch "/notifications/:id/read_status", to: "notifications#update_read_status"
+  get 'conversations', to: 'messages#conversations'
+  resources :users, only: [] do
+    resources :messages, only: [:index, :create]
+  end
 end
