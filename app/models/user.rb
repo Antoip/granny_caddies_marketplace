@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :photo
 
+  has_many :caddies
   has_many :bookings
   has_many :notifications, through: :bookings
 
@@ -26,25 +27,20 @@ class User < ApplicationRecord
 
   def count_unread_notifications
     count = 0
-    Booking.where(user: self).each do |booking|
-      count += booking.booking_unread_notifications
+    Caddie.where(user_id: self).each do |caddy|
+      count += caddy.unread_notifications
     end
     count
   end
 
   def notifications
     notifications = []
-    Booking.where(user: self).each do |booking|
-      unless booking.booking_notifications.empty?
-        booking.booking_notifications.each do |notification|
-          notifications << notification
-        end
-      end
-    end
-    Caddie.where(user:self).each do |caddie|
-      unless caddie.caddie_notifications.empty?
-        caddie.caddie_notifications.each do |notification|
-          notifications << notification
+    unless Caddie.where(user_id: self).empty?
+      Caddie.where(user_id: self).each do |caddie|
+        unless caddie.notifications.empty?
+          caddie.notifications.each do |notification|
+            notifications << notification
+          end
         end
       end
     end

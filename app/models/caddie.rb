@@ -4,6 +4,7 @@ class Caddie < ApplicationRecord
 
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_many :notifications, through: :bookings, dependent: :destroy
   # has_many :users, through: :bookings
   has_many :reviews, through: :bookings, dependent: :destroy
   has_one_attached :photo
@@ -30,7 +31,7 @@ class Caddie < ApplicationRecord
     end
   end
 
-  def caddie_notifications
-    # TODO
+  def unread_notifications
+    self.notifications.where(read_status: false).length
   end
 end
