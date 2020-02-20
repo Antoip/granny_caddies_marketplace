@@ -23,6 +23,10 @@ class User < ApplicationRecord
     end
   end
 
+  def count_unread_notifications
+    Notification.where(user: self).where(read_status: false).length
+  end
+
   def friends
     friends = Message.where(sender: self).map { |message| message.receiver} + Message.where(receiver: self).map { |message| message.sender}
     friends.uniq
