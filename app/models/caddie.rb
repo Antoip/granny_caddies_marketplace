@@ -21,4 +21,12 @@ class Caddie < ApplicationRecord
                 "4 - It is a radiant racing caddie"]
   WHEELS_NUMBER = (2..7).to_a
   CAPACITY = (1..20).to_a
+
+  def changeAvailability
+    if availability == true
+      availability = false
+    else
+      availability = true
+    end
+  end
 end
