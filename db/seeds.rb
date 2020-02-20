@@ -87,7 +87,7 @@ users_attributes = []
 
 
     user4 =  User.create(
-    email: 'ertrude@coolmamie.io',
+    email: 'gertrude@gmail.io',
     encrypted_password: Faker::Internet.password,
     password: Faker::Internet.password
     )
