@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_02_20_135007) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +75,15 @@ ActiveRecord::Schema.define(version: 2020_02_20_135007) do
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
+  
+  create_table "notifications", force: :cascade do |t|
+    t.text "description"
+    t.boolean "read_status", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.string "description"
@@ -102,5 +112,6 @@ ActiveRecord::Schema.define(version: 2020_02_20_135007) do
   add_foreign_key "caddies", "users"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "bookings"
 end
