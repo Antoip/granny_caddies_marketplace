@@ -28,17 +28,14 @@
   width: 100%;
   display: flex;
   margin: 32px 0px;
-  justify-content: space-around;
+  justify-content: center;
   a {
+    margin: 0px 16px;
+  }
+  div {
+    width: 100%;
     flex-grow: 1;
-    .book-now {
-      width: 100%;
-    }
-  .btn-lat {
-    margin: 0px 4px;
   }
-  }
-
 }
 
 .caddie-description-show {
