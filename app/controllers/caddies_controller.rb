@@ -55,7 +55,7 @@ class CaddiesController < ApplicationController
     @caddie.update({availability: @caddie.availability})
     redirect_to dashboard_path
   end
-    
+
   def destroy
     @caddie.delete
     redirect_to caddies_path
@@ -68,7 +68,7 @@ class CaddiesController < ApplicationController
   end
 
   def caddie_params
-    params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity, :price, :photo)
+    params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity, :price, :photo, :address)
   end
 
 end
