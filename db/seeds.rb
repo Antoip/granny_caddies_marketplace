@@ -367,7 +367,7 @@ caddie9 = Caddie.create(
   capacity:      rand(5..10),
   user:          User.find(rand(first..last)),
   price:         14,
-  address: "32 rue de longchamps, Paris"
+  address: "32 rue de la pompe, Paris"
 )
 
 file = URI.open('https://www.luckyfind.fr/sites/luckyfind/files/classifieds/055824-5bab5c8f81ee0-5bab5c2abf01c-100_7775.jpg')

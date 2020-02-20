@@ -21,4 +21,9 @@ class Caddie < ApplicationRecord
                 "4 - It is a radiant racing caddie"]
   WHEELS_NUMBER = (2..7).to_a
   CAPACITY = (1..20).to_a
+
+  include PgSearch::Model
+  multisearchable against: [:name, :description, :address] ,  using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
