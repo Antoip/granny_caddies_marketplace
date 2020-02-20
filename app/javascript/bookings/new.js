@@ -1,5 +1,5 @@
-const startDate = document.querySelector(".start-date")
-const endDate = document.querySelector(".end-date")
+const startDate = document.getElementById("range_start")
+const endDate = document.getElementById("range_end")
 const price = document.querySelector(".price-antoine")
 
 if (startDate) {
@@ -29,3 +29,5 @@ if (startDate) {
                            };
                          });
 }
+
+console.log(startDate)
