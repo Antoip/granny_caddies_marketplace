@@ -20,6 +20,11 @@ class CaddiesController < ApplicationController
       @caddies = results.map do |result|
         result.searchable
       end
+      @test =[]
+      @caddies.each do |caddie|
+        @test << caddie if caddie.price <= params[:price].to_i
+      end
+      raise
         @markers = @caddies.map do |caddie|
         {
           lat: caddie.latitude,

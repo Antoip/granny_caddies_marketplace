@@ -23,7 +23,7 @@ class Caddie < ApplicationRecord
   CAPACITY = (1..20).to_a
 
   include PgSearch::Model
-  multisearchable against: [:name, :description, :address] ,  using: {
+  multisearchable against: [:name, :description, :address, :price] ,  using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
 end

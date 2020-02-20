@@ -12,25 +12,25 @@
 <div class="filter-parameter d-flex">
 
 <div class="search-index">
-<label>Search your dream caddie:</label>
+<label>Search your dream caddie:)</label>
   <%= form_tag caddies_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a caddie:)"
   %>
+  <div class="slidecontainer">
+  <label>Select the price:</label>
+  <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
+  <div>
+<p id="demo"></p>
+</div>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 </div>
 
-<div class="slidecontainer">
-<label>Select the price:</label>
-<div>
-  <input type="range" min="0" max="30" value="15" class="slider" id="myRange">
-</div>
-<div>
-  <p id="demo"></p>
-</div>
+
+
 </div>
 
 <div class="checkbox">
