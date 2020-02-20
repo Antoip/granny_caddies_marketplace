@@ -13,16 +13,15 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-  resources :notifications, only: %i[create update delete]
+  resources :notifications, only: %i[update delete]
 
   get "/dashboard", to: "pages#dashboard"
   get "/notifications", to: "pages#notifications"
   resources :bookings, only: :destroy
   patch "/caddies/:id/availability", to: "caddies#update_availability"
+  patch "/notifications/:id/read_status", to: "notifications#update_read_status"
   get 'conversations', to: 'messages#conversations'
-
   resources :users, only: [] do
     resources :messages, only: [:index, :create]
   end
-
 end

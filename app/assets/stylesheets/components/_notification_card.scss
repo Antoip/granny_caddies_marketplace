@@ -1,0 +1,13 @@
+.notification-container {
+  width: 80%;
+  margin: 32px auto;
+  color: black;
+}
+
+.unread-notification {
+  color: black;
+}
+
+.read-notification {
+  color: $light-purple;
+}
