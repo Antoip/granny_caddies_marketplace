@@ -1,0 +1,21 @@
+.btn-message-sent {
+  padding: 2px 7px;
+  background-color: $light-purple;
+  border-radius: 20px;
+  color: white;
+}
+
+.btn-message-received {
+  padding: 2px 7px;
+  background-color: $dark-purple;
+  border-radius: 20px;
+  color: white;
+}
+
+#message_content {
+  width:100%;
+}
+
+.message_content {
+  width:70%;
+}

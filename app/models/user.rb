@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   has_many :notifications
+  has_many :messages, dependent: :destroy
 
   def rating
     ratings = []
