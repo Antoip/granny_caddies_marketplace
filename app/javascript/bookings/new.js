@@ -8,7 +8,6 @@ if (startDate) {
                            endValue = new Date(endDate.value);
                            dateDiff = (endValue - startValue)/1000/3600/24;
                            const initPrice = price.dataset.price
-                           console.log(isNaN(dateDiff))
                            if (isNaN(dateDiff)) {
                             price.innerText = initPrice;
                            } else {
@@ -21,7 +20,6 @@ if (startDate) {
                            endValue = new Date(endDate.value);
                            dateDiff = (endValue - startValue)/1000/3600/24;
                            const initPrice = price.dataset.price
-                           // console.log(isNaN(dateDiff))
                            if (isNaN(dateDiff)) {
                             price.innerText = initPrice;
                            } else {
@@ -30,4 +28,3 @@ if (startDate) {
                          });
 }
 
-console.log(startDate)
