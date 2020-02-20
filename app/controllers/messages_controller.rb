@@ -5,6 +5,11 @@ class MessagesController < ApplicationController
 
   def index
     @messages = current_user.conversation_with(params[:user_id])
+    if @messages.last.user_id == current_user.id
+      @messages.each do |message|
+
+      end
+    end
     @message  = Message.new
     @friend   = User.find(params[:user_id])
   end
@@ -21,6 +26,11 @@ class MessagesController < ApplicationController
       render :index
     end
   end
+
+  # def update(message)
+  #   msg = Message.find(message)
+
+  # end
 
   private
 

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'conversations', to: 'messages#conversations'
 
   resources :users, only: [] do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:index, :create, :update]
   end
 
 end

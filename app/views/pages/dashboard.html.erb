@@ -9,13 +9,14 @@
           <% current_user.friends.each do |friend| %>
           <div class="cardy borders w-75">
             <div class="card-header d-flex justify-content-between collapsable">
-              <h2 class="mb-0">
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-start">
                   <button type="button" class="btn btn-transp" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>" data-friend-id="<%= friend.id %>">
                     <div>
                       <%= friend.email %>
                     </div>
                   </button>
+                  <% unread = current_user.conversation_with(friend.id).select { |inst| inst.read == false } %>
+                  <% unread.length %>
                   <div class="modal fade" id="modal-<%= friend.id %>" tabindex="-1" role="dialog" aria-labelledby="<%= friend.id %>Label" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -45,7 +46,6 @@
                   </div>
                 </div>
 
-              </h2>
             </div>
           </div>
           <% end %>
