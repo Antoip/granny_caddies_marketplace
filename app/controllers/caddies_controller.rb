@@ -3,7 +3,8 @@ class CaddiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @caddies = Caddie.all
+    # @caddies = Caddie.all
+    @caddies = Caddie.where(availability: true)
     @caddies_geo = Caddie.geocoded
     @markers = @caddies_geo.map do |caddie|
       {
@@ -33,22 +34,19 @@ class CaddiesController < ApplicationController
     end
   end
 
-def caddie_params
-  params.require(:caddie).permit(:title, :body, :photo)
-end
-
   def edit
     @caddie = Caddie.find(params[:id])
   end
 
   def update
     @caddie = Caddie.find(params[:id])
-
-    if @caddie.update(caddie_params)
-      redirect_to caddy_path(@caddie)
+    if @caddie.availability == true
+      @caddie.availability = false
     else
-      render :edit
+      @caddie.availability = true
     end
+    @caddie.update({availability: @caddie.availability})
+    redirect_to dashboard_path
   end
 
   private
