@@ -1,11 +1,11 @@
 <div class="mt-5 notification-container">
   <h1>Notifications</h1>
-  <% if Notification.where(user_id: current_user).empty? %>
+  <% if current_user.notifications.empty? %>
     <%= "You don't have any notification yet" %>
   <% else %>
     <div class="notification-card d-flex flex-column align-items-center">
       <% i=1 %>
-      <% Notification.where(user_id: current_user).each do |notification| %>
+      <% current_user.notifications.each do |notification| %>
         <% i+=1 %>
         <div class="cardy borders w-75">
           <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
@@ -19,21 +19,6 @@
               <% end %>
             </p>
           </div>
-
-          <!-- <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
-            <div class="card-body d-flex position-relative">
-              <%#= cl_image_tag caddie.photo.key, height: 160, width: 200, crop: :fill %>
-              <div class="card-product-infos">
-                  <ul><strong>Product overview :</strong>
-                    <li>Condition : <%= caddie.condition %></li>
-                    <li>Number of wheels : <%= caddie.wheels_number %></li>
-                    <li>Capacity : <%= caddie.capacity %> L</li>
-                  </ul>
-                  <div class="badge badge-secondary pricey"><%= caddie.price %> €</div>
-                  <%#= link_to 'See Caddie', caddy_path(caddie), id: "to-show" %>
-                </div>
-            </div>
-          </div> -->
 
 
         </div>
