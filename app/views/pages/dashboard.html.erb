@@ -10,7 +10,7 @@
           <div class="cardy borders w-75">
             <div class="card-header d-flex justify-content-between collapsable">
                 <div class="d-flex justify-content-start">
-                  <button type="button" class="btn btn-transp" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>" data-friend-id="<%= friend.id %>">
+                  <button type="button" class="btn btn-transp" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>">
                     <div>
                       <%= friend.email %>
                     </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="modal-body">
                           <% current_user.conversation_with(friend.id).each do |message| %>
-                            <% if message.sender == current_user %>
+                          <% if message.sender == current_user %>
                               <div class="d-flex justify-content-end"><p class="btn btn-message-sent"><%= message.content %></p></div>
                             <% else %>
                               <div class="d-flex justify-content-start"><p class="btn btn-message-received"><%= message.content %></p></div>
@@ -36,9 +36,9 @@
                           <% end %>
                         </div>
                         <div class="modal-footer d-flex justify-content-between">
-                            <%= simple_form_for [friend, Message.new], wrapper: :inline_form, html: { class: 'form-inline d-flex w-100 justify-content-between' } do |f| %>
-                            <%= f.input :content, label: false %>
-                            <%= f.button :submit, 'Send message' , class: "btn btn-perso ml-3" %>
+                          <%= simple_form_for [friend, Message.new], remote: true, wrapper: :inline_form, html: { class: 'form-inline d-flex w-100 justify-content-between', id: "new_message_#{friend.id}" } do |f| %>
+                              <%= f.input :content, label: false %>
+                              <%= f.button :submit, 'Send message' , class: "btn btn-perso ml-3" %>
                             <% end %>
                         </div>
                       </div>
@@ -53,7 +53,7 @@
       <% end %>
   </div>
 
-  <div class="row d-flex justify-content-between">
+  <div class="row d-flex justify-content-between p-3">
     <div class="col-6 mt-5 dash-card" id="booking-to-come-height">
       <h2>Your bookings to come</h2>
       <% if Booking.where(user_id: current_user).where("start_date > 'today'").empty? %>

@@ -18,12 +18,25 @@ class MessagesController < ApplicationController
     @message          = Message.new(message_params)
     @message.sender   = current_user
     @message.receiver = User.find(params[:user_id])
+    @id = params[:user_id]
+    # if @message.save
+    #   redirect_to dashboard_path
+    # else
+    #   @friend   = User.find(params[:user_id])
+    #   @messages = current_user.conversation_with(params[:user_id])
+    #   render :index
+    # end
+
     if @message.save
-      redirect_to dashboard_path
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      @friend   = User.find(params[:user_id])
-      @messages = current_user.conversation_with(params[:user_id])
-      render :index
+      respond_to do |format|
+        format.html { render 'caddies/index' }
+        format.js  # <-- idem
+      end
     end
   end
 

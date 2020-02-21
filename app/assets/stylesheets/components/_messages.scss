@@ -3,6 +3,9 @@
   background-color: $light-purple;
   border-radius: 20px;
   color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 .btn-message-received {
@@ -10,6 +13,9 @@
   background-color: $dark-purple;
   border-radius: 20px;
   color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 #message_content {
@@ -17,5 +23,5 @@
 }
 
 .message_content {
-  width:70%;
+  width:65%;
 }
