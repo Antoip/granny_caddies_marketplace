@@ -43,40 +43,38 @@
 </div>
 
 <div class="container-index" id="home-card-list">
-  <div class="row">
-    <div class="col-xs-12 col-md-8">
-      <div class="cards-mf">
-        <div class="row">
-          <% @caddies.each do |caddy| %>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-              <div class="card-mf">
-                <%= link_to caddy_path(caddy), style:"text-decoration: none; color: #727071" do %>
-                  <% if caddy.photo.attached? %>
-                    <%= cl_image_tag caddy.photo.key, height: 250, width: 350, crop: :fill %>
-                  <% end %>
-                  <div class="home-card-title">
-                    <h2><%= caddy.name %></h2>
-                  </div>
-                  <div class="home-card-text">
-                    <p>  <i class="fas fa-heartbeat" style="color: red"> </i> - Condition : <%=caddy.condition %></p>
-                    <p> <i class="fas fa-dharmachakra" style="color: black"></i> - Nombre de roues : <%= caddy.wheels_number %></p>
-                    <p> <i class="fas fa-dolly-flatbed" style="color: #81cef4"></i> - Capacity : <%= caddy.capacity %></p>
-                    <p class="price-mf" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
-                  </div>
+  <div class="col-xs-12 col-md-8">
+    <div class="cards-mf">
+      <div class="row">
+        <% @caddies.each do |caddy| %>
+          <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="card-mf">
+              <%= link_to caddy_path(caddy), style:"text-decoration: none; color: #727071" do %>
+                <% if caddy.photo.attached? %>
+                  <%= cl_image_tag caddy.photo.key, height: 250, width: 350, crop: :fill %>
                 <% end %>
-              </div>
+                <div class="home-card-title">
+                  <h2><%= caddy.name %></h2>
+                </div>
+                <div class="home-card-text">
+                  <p>  <i class="fas fa-heartbeat" style="color: red"> </i> - Condition : <%=caddy.condition %></p>
+                  <p> <i class="fas fa-dharmachakra" style="color: black"></i> - Nombre de roues : <%= caddy.wheels_number %></p>
+                  <p> <i class="fas fa-dolly-flatbed" style="color: #81cef4"></i> - Capacity : <%= caddy.capacity %></p>
+                  <p class="price-mf" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
+                </div>
+              <% end %>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
-    <div class="col-xs-12 col-md-4">
-      <div
-        id="map"
-        style="width: 100%"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <div
+      id="map"
+      style="width: 100%"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
   </div>
 </div>
