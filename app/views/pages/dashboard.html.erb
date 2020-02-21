@@ -13,7 +13,7 @@
                   <button type="button" class="btn btn-transp w-100" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>">
                     <div class="d-flex justify-content-between w-100">
                       <%= friend.email %>
-                      <% unread = current_user.conversation_with(friend.id).select { |inst| inst.read == false } %>
+                      <% unread = current_user.conversation_with(friend.id).select { |inst| inst.receiver == current_user && inst.read == false } %>
                       <div class="text-right countdown"><%= unread.length %> unread</div>
                     </div>
                   </button>
@@ -22,7 +22,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="<%= friend.id %>Label">Conversation with <%= friend.email.scan(/^\w+/).join.capitalize %></h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" href="dashboard">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
@@ -30,8 +30,6 @@
                           <% current_user.conversation_with(friend.id).each do |message| %>
                           <% if message.sender == current_user %>
                               <div class="d-flex justify-content-end"><p class="btn btn-message-sent"><%= message.content %></p></div>
-                              <% message.read = true %>
-                              <% message.update({read: message.read}) %>
                             <% else %>
                               <div class="d-flex justify-content-start"><p class="btn btn-message-received"><%= message.content %></p></div>
                               <% message.read = true %>
@@ -43,7 +41,9 @@
                           <%= simple_form_for [friend, Message.new], remote: true, wrapper: :inline_form, html: { class: 'form-inline d-flex w-100 justify-content-between', id: "new_message_#{friend.id}" } do |f| %>
                               <%= f.input :content, label: false %>
                               <%= f.button :submit, 'Send message' , class: "btn btn-perso ml-3" %>
+                            <%= link_to 'Close', dashboard_path, class: "btn btn-perso2 ml-1" %>
                             <% end %>
+
                         </div>
                       </div>
                     </div>
