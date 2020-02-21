@@ -9,50 +9,38 @@
     </p>
 
   </div>
-<div class="filter-parameter">
+  <div class="filter-parameter">
 
 
-<div class="search-index " >
-  <div class="search-bar">
-<label>Search your dream caddie:)</label>
-<div class="inputbar d-lg-flex">
-  <div class="formy">
-  <%= form_tag caddies_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a caddie:)"
-  %>
-</div>
-<div>
-  <%= submit_tag "Search", class: "btn search" %>
-  </div>
-  </div>
-  </div>
-  <div class="slidecontainer">
-      <label>Select your maximum price:</label>
-  <div>
-      <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
-  </div>
-  <div>
-    <p id="demo"></p>
+    <div class="search-index " >
+      <div class="home-search-bar mb-4">
+        <label>Search your dream caddie:)</label>
+        <div class="inputbar d-lg-flex">
+          <div class="formy">
+            <%= form_tag caddies_path, method: :get do %>
+              <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Find a caddie:)"%>
+          </div>
+          <div>
+            <%= submit_tag "Search", class: "btn-search" %>
+          </div>
+        </div>
       </div>
+      <div class="slidecontainer">
+        <label>Select your maximum price:</label>
+        <div>
+          <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
+        </div>
+        <div>
+          <p id="demo"></p>
+        </div>
       </div>
-
-        <% end %>
-
-      </div>
-
+    <% end %>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 <div class="container-index" id="home-card-list">
   <div class="row">

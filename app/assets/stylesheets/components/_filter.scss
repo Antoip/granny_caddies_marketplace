@@ -3,51 +3,38 @@
   margin-top: 22%;
 }
 
-
-
-
-
 .search-index{
   margin-left: 10%;
-
 }
 
 .slidecontainer{
-width:60%;
-margin-left:0%
-}
-
-
-.form-control{
-  width:100%
+  width: 60%;
+  margin-left: 0%;
 }
 
 .slider{
-  width:50%
-
+  width: 50%;
 }
 
 
 .inputbar{
-  width:100%
+  width: 100%;
 }
 
-.d-flex{
-  width:100%
-}
-.search-bar{
-  width:700%
+.home-search-bar{
+  width: 700px;
 }
 
 .formy{
-  width:5%
+  width: 600px;
+  form {
+    width: 100%;
+  }
 }
 
-.btn.search{
-background-color:rgb(228, 187, 237);
-color:white
-}
-
-.btn{
-  margin-left:20%
+.btn-search{
+  background-color: rgb(228, 187, 237);
+  color: white;
+  height: 100%;
+  border-radius: 5px;
 }
