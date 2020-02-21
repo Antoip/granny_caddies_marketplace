@@ -44,7 +44,7 @@ class User < ApplicationRecord
         end
       end
     end
-    notifications
+    notifications.sort_by { |notification| notification.read_status ? 1 : 0 }
   end
 
   def friends
