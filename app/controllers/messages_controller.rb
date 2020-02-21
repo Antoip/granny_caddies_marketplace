@@ -5,11 +5,11 @@ class MessagesController < ApplicationController
 
   def index
     @messages = current_user.conversation_with(params[:user_id])
-    if @messages.last.user_id == current_user.id
-      @messages.each do |message|
-
-      end
+    @messages.each do |message|
+      message.read = true
+      message.update({read: message.read})
     end
+    raise
     @message  = Message.new
     @friend   = User.find(params[:user_id])
   end
@@ -40,10 +40,13 @@ class MessagesController < ApplicationController
     end
   end
 
-  # def update(message)
-  #   msg = Message.find(message)
-
-  # end
+  def update
+    @message = Message.find(params[:id])
+    # @caddie = Caddie.find(params[:id])
+    @message.read = true
+    @message.update({read: @message.read})
+    redirect_to dashboard_path
+  end
 
   private
 

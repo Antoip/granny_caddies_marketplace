@@ -9,14 +9,14 @@
           <% current_user.friends.each do |friend| %>
           <div class="cardy borders w-75">
             <div class="card-header d-flex justify-content-between collapsable">
-                <div class="d-flex justify-content-start">
-                  <button type="button" class="btn btn-transp" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>">
-                    <div>
+                <div class="d-flex justify-content-between w-100">
+                  <button type="button" class="btn btn-transp w-100" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>">
+                    <div class="d-flex justify-content-between w-100">
                       <%= friend.email %>
+                      <% unread = current_user.conversation_with(friend.id).select { |inst| inst.read == false } %>
+                      <div class="text-right countdown"><%= unread.length %> unread</div>
                     </div>
                   </button>
-                  <% unread = current_user.conversation_with(friend.id).select { |inst| inst.read == false } %>
-                  <% unread.length %>
                   <div class="modal fade" id="modal-<%= friend.id %>" tabindex="-1" role="dialog" aria-labelledby="<%= friend.id %>Label" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -30,8 +30,12 @@
                           <% current_user.conversation_with(friend.id).each do |message| %>
                           <% if message.sender == current_user %>
                               <div class="d-flex justify-content-end"><p class="btn btn-message-sent"><%= message.content %></p></div>
+                              <% message.read = true %>
+                              <% message.update({read: message.read}) %>
                             <% else %>
                               <div class="d-flex justify-content-start"><p class="btn btn-message-received"><%= message.content %></p></div>
+                              <% message.read = true %>
+                              <% message.update({read: message.read}) %>
                             <% end %>
                           <% end %>
                         </div>
@@ -73,7 +77,7 @@
               </h2>
               <div class="d-flex align-items-center">
                 <% if booking.state == "Approved" %>
-                  <div id="countdown">
+                  <div class="countdown">
                     <% if booking.start_date > today %>
                       <%= "In #{(booking.start_date - today).to_i} days" %>
                     <% else %>
@@ -81,11 +85,11 @@
                     <% end %>
                   </div>
                 <% elsif booking.state == "Pending" %>
-                  <div id="countdown">
+                  <div class="countdown">
                     Pending
                   </div>
                 <% else %>
-                  <div id="countdown">
+                  <div class="countdown">
                     Request Refused
                   </div>
                 <% end %>
