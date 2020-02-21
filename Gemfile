@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.2.4.1'
 gem 'redis'
 gem 'devise'
+gem 'bootstrap-slider-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -21,6 +22,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
 gem 'animate.css-rails', '~> 3.2.0'
 
+gem 'pg_search', '~> 2.3.0'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

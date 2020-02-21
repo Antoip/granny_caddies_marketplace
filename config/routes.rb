@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
   resources :bookings, only: :destroy
+  patch "/bookings/:id/state_approve", to: "bookings#approve_booking"
+  patch "/bookings/:id/state_refuse", to: "bookings#refuse_booking"
 
   resources :notifications, only: %i[update delete]
   get "/notifications", to: "pages#notifications"

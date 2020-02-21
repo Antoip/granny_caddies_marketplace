@@ -15,3 +15,6 @@ initMapbox();
 
 import { animatedCards } from '../components/cards-home';
 animatedCards();
+
+import { changingPrice } from '../components/price_filter';
+changingPrice();

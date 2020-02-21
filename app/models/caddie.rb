@@ -23,6 +23,12 @@ class Caddie < ApplicationRecord
   WHEELS_NUMBER = (2..7).to_a
   CAPACITY = (1..20).to_a
 
+
+  include PgSearch::Model
+  multisearchable against: [:name, :description, :address, :price] ,  using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def changeAvailability
     if availability == true
       availability = false
@@ -34,4 +40,5 @@ class Caddie < ApplicationRecord
   def unread_notifications
     self.notifications.where(read_status: false).length
   end
+
 end
