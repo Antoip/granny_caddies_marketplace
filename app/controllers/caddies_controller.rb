@@ -34,7 +34,7 @@ class CaddiesController < ApplicationController
         }
 
 
-
+      end
       end
   end
 
