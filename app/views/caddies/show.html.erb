@@ -71,6 +71,7 @@
     <% end %>
   </div>
 
+<% if current_user != @caddie.user %>
 <div class="d-flex justify-content-end mb-5">
   <button type="button" class="btn btn-perso" data-toggle="modal" data-target="#sendMessage">
     Send Message to <%= @caddie.user.email %>
@@ -96,6 +97,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
   <div class="caddie-booking-reviews">
     <h3>Reviews</h3>
