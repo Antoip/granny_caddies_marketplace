@@ -6,5 +6,6 @@ class PagesController < ApplicationController
   end
 
   def notifications
+    @notifications = current_user.notifications
   end
 end

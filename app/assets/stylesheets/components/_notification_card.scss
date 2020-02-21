@@ -2,6 +2,7 @@
   width: 80%;
   margin: 32px auto;
   color: black;
+
 }
 
 .unread-notification {
@@ -10,4 +11,14 @@
 
 .read-notification {
   color: $light-purple;
+}
+
+.request-action-buttons {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .btn {
+    margin: 0px 8px;
+  }
 }

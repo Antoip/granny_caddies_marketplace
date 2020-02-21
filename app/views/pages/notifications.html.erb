@@ -1,25 +1,42 @@
 <div class="mt-5 notification-container">
   <h1>Notifications</h1>
-  <% if current_user.notifications.empty? %>
+  <% if @notifications.empty? %>
     <%= "You don't have any notification yet" %>
   <% else %>
-    <div class="notification-card d-flex flex-column align-items-center">
+    <div class="accordion notification-card d-flex flex-column align-items-center" id="accordionCaddies">
       <% i=1 %>
-      <% current_user.notifications.each do |notification| %>
+      <% @notifications.each do |notification| %>
         <% i+=1 %>
-        <div class="cardy borders w-75">
+        <div class="cardy borders w-75 my-3">
           <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
             <p class="mb-0">
               <%= link_to "/notifications/#{notification.id}/read_status", method: 'patch' do %>
-                <button class="btn <%=notification.read_status ? "read" : "unread" %>-notification collapsed"
-                        type="button" data-toggle="collapse" data-target="#collapse<%= i %>"
-                        aria-expanded="false" aria-controls="collapse<%= i %>">
-                  <%= notification.description %>
+                <button class="btn <%=notification.read_status ? "read" : "unread" %>-notification" type="button">
+                    <%= notification.description %>
                 </button>
               <% end %>
             </p>
           </div>
-
+          <div class="notification-content">
+            <div class="card-body d-flex position-relative">
+              <%= cl_image_tag notification.booking.caddie.photo.key, height: 160, width: 200, crop: :fill %>
+              <div class="card-product-infos">
+                <ul><strong>Booking Request Overview :</strong>
+                  <li>Start date : <%= notification.booking.start_date %></li>
+                  <li>End date : <%= notification.booking.end_date %></li>
+                  <li>Price : <%= notification.booking.price * (notification.booking.end_date - notification.booking.start_date).to_i %> €</li>
+                </ul>
+              </div>
+              <div class="request-action-buttons">
+                <%= link_to "/bookings/#{notification.booking.id}/state_approve", method: 'patch' do %>
+                  <div class="btn btn-success">Approve</div>
+                <% end %>
+                <%= link_to "/bookings/#{notification.booking.id}/state_refuse", method: 'patch' do %>
+                  <div class="btn btn-danger">Refuse</div>
+                <% end %>
+              </div>
+            </div>
+          </div>
 
         </div>
       <% end %>
