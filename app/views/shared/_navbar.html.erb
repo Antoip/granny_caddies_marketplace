@@ -26,7 +26,9 @@
 
             <div class="avatar-with-notification dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img class="notification-avatar avatar dropdown-toggle" src="https://picsum.photos/200" />
-              <p class="notification-count"><%= current_user.count_unread_notifications %></p>
+              <% if current_user.count_unread_notifications > 0 %>
+                <p class="notification-count"><%= current_user.count_unread_notifications %></p>
+              <% end %>
             </div>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

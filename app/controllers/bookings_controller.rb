@@ -35,6 +35,24 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def approve_booking
+    @booking = Booking.find(params[:id])
+    @notification = @booking.notifications.first
+    @booking.state = "Approved"
+    @booking.update({state: @booking.state})
+    @notification.delete
+    redirect_to notifications_path
+  end
+
+  def refuse_booking
+    @booking = Booking.find(params[:id])
+    @notification = @booking.notifications.first
+    @booking.state = "Refused"
+    @booking.update({state: @booking.state})
+    @notification.delete
+    redirect_to notifications_path
+  end
+
   private
 
   def booking_params
