@@ -20,12 +20,12 @@
     placeholder: "Find a caddie:)"
   %>
   <div class="slidecontainer">
-  <label>Select the price:</label>
+  <label>Select the maximum price:</label>
   <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
   <div>
 <p id="demo"></p>
 </div>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+<%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 </div>
 
