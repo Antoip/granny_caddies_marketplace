@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking.caddie = @caddie
     if @booking.save
       redirect_to dashboard_path
-      @notification = Notification.new(user_id: @caddie.user.id,
+      @notification = Notification.new(booking_id: @booking.id,
                                        description: "#{current_user.email} requested to rent your
                                        trolley from #{@booking.start_date} to #{@booking.end_date}")
       @notification.save
