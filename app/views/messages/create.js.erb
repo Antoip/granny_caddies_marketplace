@@ -1,0 +1,14 @@
+
+function refreshForm(id) {
+  const newMessagewForm = document.querySelector(`#new_message_${id} textarea`);
+  newMessagewForm.value = ""
+}
+
+function loadMessage(messageHTML) {
+  const id = <%= @id %>;
+  const modalMessage = document.querySelector(`#modal-${id} .modal-body`);
+  modalMessage.insertAdjacentHTML('beforeend', messageHTML);
+  refreshForm(id);
+}
+
+loadMessage('<div class="d-flex justify-content-end"><p class="btn btn-message-sent"><%= @message.content %></p></div>');
