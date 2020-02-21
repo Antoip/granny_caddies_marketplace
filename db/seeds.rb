@@ -135,7 +135,13 @@ users_attributes = []
   file = URI.open('https://images.unsplash.com/photo-1575075500178-c99ef905661a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
   user8.photo.attach(io: file, filename: 'user8.jpg', content_type: 'image/png')
 
-
+    user9 =  User.create(
+      email: 'roger@gmail.com',
+      encrypted_password: "azerty",
+      password: "azerty"
+      )
+    file = URI.open('https://images.unsplash.com/photo-1582117757761-fc40f7d58f48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&auto=format&fit=crop&w=2734&q=80')
+    user9.photo.attach(io: file, filename: 'user9.jpg', content_type: 'image/png')
 
 
 #  # array.delete(sample)
@@ -563,7 +569,13 @@ caddie9.photo.attach(io: file, filename: 'old.jpg', content_type: 'image/png')
      price: Caddie.find(arrayCaddieID[1]).price
      )
 
-
+       bookings_attributes << Booking.create(
+     start_date: Faker::Date.backward(days: 20),
+     end_date: Faker::Date.backward(days: 10),
+     caddie: Caddie.find(arrayCaddieID[1]),
+     user: User.last,
+     price: Caddie.find(arrayCaddieID[1]).price
+     )
 
 
 
