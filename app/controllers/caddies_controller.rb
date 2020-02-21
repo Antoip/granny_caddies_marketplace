@@ -4,16 +4,38 @@ class CaddiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    # @caddies = Caddie.all
-    @caddies = Caddie.where(availability: true)
-    @caddies_geo = Caddie.geocoded
-    @markers = @caddies_geo.map do |caddie|
-      {
-        lat: caddie.latitude,
-        lng: caddie.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
-      }
-    end
+    if params[:query].nil?
+      @caddies = Caddie.where(availability: true)
+      @caddies_geo = Caddie.geocoded
+      @markers = @caddies_geo.map do |caddie|
+        {
+          lat: caddie.latitude,
+          lng: caddie.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
+        }
+      end
+      caddies_path(anchor: 'home-card-list')
+    else
+      results = PgSearch.multisearch(params[:query])
+      caddies_result = results.map do |result|
+        result.searchable
+      end
+
+      @caddies = caddies_result.select do |caddie|
+        caddie.price <= params[:price].to_i
+      end
+
+
+        @markers = @caddies.map do |caddie|
+        {
+          lat: caddie.latitude,
+          lng: caddie.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
+        }
+
+
+
+      end
   end
 
   def show

@@ -1,14 +1,50 @@
+
+
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1509718497735-12d26d780d2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);">
   <div class="container">
     <h1><strong>CaddY'n'B</strong>!</h1>
     <p>
       <span id="banner-typed-text"></span>
     </p>
+
+  </div>
+<div class="filter-parameter">
+
+
+<div class="search-index " >
+  <div class="search-bar">
+<label>Search your dream caddie:)</label>
+<div class="inputbar d-lg-flex">
+  <div class="formy">
+  <%= form_tag caddies_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a caddie:)"
+  %>
+</div>
+<div>
+  <%= submit_tag "Search", class: "btn search" %>
+  </div>
+  </div>
+  </div>
+  <div class="slidecontainer">
+      <label>Select your maximum price:</label>
+  <div>
+      <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
+  </div>
+  <div>
+    <p id="demo"></p>
+      </div>
+      </div>
+
+        <% end %>
+
+      </div>
+
   </div>
 </div>
-
-
-
 
 <div class="container-index" id="home-card-list">
   <div class="row">
