@@ -13,6 +13,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 
+import { animatedCards } from '../components/cards-home';
+animatedCards();
 
 import { changingPrice } from '../components/price_filter';
 changingPrice();
