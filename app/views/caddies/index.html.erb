@@ -9,60 +9,39 @@
     </p>
 
   </div>
-<div class="filter-parameter d-flex">
+<div class="filter-parameter">
 
-<div class="search-index">
+
+<div class="search-index " >
+  <div class="search-bar">
 <label>Search your dream caddie:)</label>
+<div class="inputbar d-lg-flex">
+  <div class="formy">
   <%= form_tag caddies_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a caddie:)"
   %>
-  <div class="slidecontainer">
-  <label>Select the maximum price:</label>
-  <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
-  <div>
-<p id="demo"></p>
 </div>
-<%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-</div>
-
-
-
-</div>
-
-<div class="checkbox">
-<label>Select the number of wheels:</label>
 <div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">1</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">3</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">4</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">5</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">6</label>
-</div>
-</div>
-</div>
+  <%= submit_tag "Search", class: "btn search" %>
+  </div>
+  </div>
+  </div>
+  <div class="slidecontainer">
+      <label>Select your maximum price:</label>
+  <div>
+      <%= range_field_tag(:price, value = nil, {:class => 'slider', :id=>"myRange"})%>
+  </div>
+  <div>
+    <p id="demo"></p>
+      </div>
+      </div>
 
+        <% end %>
+
+      </div>
 
   </div>
 </div>

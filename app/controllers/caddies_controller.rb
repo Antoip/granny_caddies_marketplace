@@ -17,15 +17,13 @@ class CaddiesController < ApplicationController
       caddies_path(anchor: 'home-card-list')
     else
       results = PgSearch.multisearch(params[:query])
-      @caddies = results.map do |result|
+      caddies_result = results.map do |result|
         result.searchable
       end
 
-      # @test =[]
-     # @caddies.map do |caddie|
-    #    @test << caddie if caddie.price <= params[:price].to_i
-   #   end
-
+      @caddies = caddies_result.select do |caddie|
+        caddie.price <= params[:price].to_i
+      end
 
 
         @markers = @caddies.map do |caddie|
@@ -35,11 +33,13 @@ class CaddiesController < ApplicationController
           infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
         }
 
+
+
       end
 
 
-    end
 
+    end
   end
 
   def show
