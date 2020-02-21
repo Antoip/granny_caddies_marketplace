@@ -15,6 +15,7 @@ class CaddiesController < ApplicationController
         }
       end
       caddies_path(anchor: 'home-card-list')
+
     else
       results = PgSearch.multisearch(params[:query])
       caddies_result = results.map do |result|
