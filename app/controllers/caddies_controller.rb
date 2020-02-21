@@ -15,16 +15,25 @@ class CaddiesController < ApplicationController
         }
       end
       caddies_path(anchor: 'home-card-list')
-
     else
       results = PgSearch.multisearch(params[:query])
-      caddies_result = results.map do |result|
-        result.searchable
-      end
-
+      if results.empty?
+        @caddies = Caddie.where(availability: true)
+        @caddies_geo = Caddie.geocoded
+        @markers = @caddies_geo.map do |caddie|
+        {
+          lat: caddie.latitude,
+          lng: caddie.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
+        }
+        end
+      else
+        caddies_result = results.map do |result|
+          result.searchable
+        end
       @caddies = caddies_result.select do |caddie|
         caddie.price <= params[:price].to_i
-      end
+        end
 
 
         @markers = @caddies.map do |caddie|
@@ -33,11 +42,11 @@ class CaddiesController < ApplicationController
           lng: caddie.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { caddie: caddie })
         }
-
-
+        end
       end
-      end
+    end
   end
+
 
   def show
     @review = Review.new
