@@ -201,7 +201,7 @@ caddies_attributes = []
 
 caddie = Caddie.create(
   name:          "Chariot mémé",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It is a radiant racing caddie",
   description:   "wonderful red trolley with leather handle never used",
   wheels_number: 2,
@@ -220,7 +220,7 @@ caddie.photo.attach(io: file, filename: 'chariot.jpg', content_type: 'image/png'
 
 caddie1 = Caddie.create(
   name:          "Trolly",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It rolls and that's already a lot",
   description:   "flower pattern trolley with metal frame",
   wheels_number: 2,
@@ -240,7 +240,7 @@ caddie1.photo.attach(io: file, filename: 'trolly.jpg', content_type: 'image/png'
 
 caddie2 = Caddie.create(
   name:          "Classy caddie",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It rolls and that's already a lot",
   description:   "Great grey caddie with metallic frame",
   wheels_number: 2,
@@ -257,7 +257,7 @@ caddie2.photo.attach(io: file, filename: 'classy_caddie.jpg', content_type: 'ima
 
 caddie3 = Caddie.create(
   name:          "Reddy MacRed",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It is a radiant racing caddie",
   description:   "new design trolley with increased capacity",
   wheels_number: 2,
@@ -274,7 +274,7 @@ caddie3.photo.attach(io: file, filename: 'red.jpg', content_type: 'image/png')
 
 caddie4 = Caddie.create(
   name:          "Floflo",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It smells a bit like fish but it is ok",
   description:   "3years old flower pattern trolley really good for stairs",
   wheels_number: 6,
@@ -291,8 +291,7 @@ caddie4.photo.attach(io: file, filename: 'floflo.jpg', content_type: 'image/png'
 
 
 caddie5 = Caddie.create(
-  name:          "Techno caddie",
-  availability:  Faker::Boolean.boolean,
+  name:          true,
   condition:     "It rolls and that's already a lot",
   description:   "techno pattern kart for youngsters",
   wheels_number: 2,
@@ -309,7 +308,7 @@ caddie5.photo.attach(io: file, filename: 'techno.jpg', content_type: 'image/png'
 
 caddie6 = Caddie.create(
   name:          "Dalmatians",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It is a radiant racing caddie",
   description:   "High Capacity trolley brand new with extra pockets dalmatians patterns",
   wheels_number: 6,
@@ -326,7 +325,7 @@ caddie6.photo.attach(io: file, filename: 'dalmatians.jpg', content_type: 'image/
 
 caddie7 = Caddie.create(
   name:          "Summer Picnic",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It barely rolls anymore",
   description:   "6 wheels summer trolley with a chair in addition",
   wheels_number: 6,
@@ -343,7 +342,7 @@ caddie7.photo.attach(io: file, filename: 'summer.jpg', content_type: 'image/png'
 
 caddie8 = Caddie.create(
   name:          "Freezer black",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It barely rolls anymore",
   description:   "black trolley ideal to keep food cold",
   wheels_number: 2,
@@ -360,7 +359,7 @@ caddie8.photo.attach(io: file, filename: 'freezer.jpg', content_type: 'image/png
 
 caddie9 = Caddie.create(
   name:          "80's caddies",
-  availability:  Faker::Boolean.boolean,
+  availability:  true,
   condition:     "It is a radiant racing caddie",
   description:   "red and white caddie old fashioned used only few times",
   wheels_number: 2,
