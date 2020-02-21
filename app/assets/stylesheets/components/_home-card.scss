@@ -16,6 +16,7 @@
   img {
     padding: 5px 0px;
   }
+  // min-height: 420px;
 }
 
 .card-mf:hover {
@@ -29,6 +30,8 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  // width: 80%;
+  margin: 0px auto;
   font-size: 12px;
   opacity: 0.7;
 }

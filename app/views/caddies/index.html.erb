@@ -1,6 +1,3 @@
-
-
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1509718497735-12d26d780d2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);">
   <div class="container">
     <h1><strong>CaddY'n'B</strong>!</h1>
@@ -50,17 +47,19 @@
           <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="card-mf">
               <%= link_to caddy_path(caddy), style:"text-decoration: none; color: #727071" do %>
-                <% if caddy.photo.attached? %>
-                  <%= cl_image_tag caddy.photo.key, height: 250, width: 350, crop: :fill %>
-                <% end %>
-                <div class="home-card-title">
-                  <h2><%= caddy.name %></h2>
-                </div>
-                <div class="home-card-text">
-                  <p>  <i class="fas fa-heartbeat" style="color: red"> </i> - Condition : <%=caddy.condition %></p>
-                  <p> <i class="fas fa-dharmachakra" style="color: black"></i> - Nombre de roues : <%= caddy.wheels_number %></p>
-                  <p> <i class="fas fa-dolly-flatbed" style="color: #81cef4"></i> - Capacity : <%= caddy.capacity %></p>
-                  <p class="price-mf" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
+                <div class="caddie-card-ap">
+                  <% if caddy.photo.attached? %>
+                    <%= cl_image_tag caddy.photo.key, height: 250, width: 350, crop: :fill %>
+                  <% end %>
+                  <div class="home-card-title">
+                    <h2><%= caddy.name %></h2>
+                  </div>
+                  <div class="home-card-text">
+                    <p>  <i class="fas fa-heartbeat" style="color: red"> </i> - Condition : <%=caddy.condition %></p>
+                    <p> <i class="fas fa-dharmachakra" style="color: black"></i> - Nombre de roues : <%= caddy.wheels_number %></p>
+                    <p> <i class="fas fa-dolly-flatbed" style="color: #81cef4"></i> - Capacity : <%= caddy.capacity %></p>
+                    <p class="price-mf" style="padding: 2px 7px"> <strong> <%= caddy.price %>€</strong></p>
+                  </div>
                 </div>
               <% end %>
             </div>
