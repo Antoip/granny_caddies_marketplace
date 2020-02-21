@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
 
   resources :users, only: [] do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:index, :create, :update]
   end
   get 'conversations', to: 'messages#conversations'
 end

@@ -18,6 +18,8 @@ class CaddiesController < ApplicationController
 
   def show
     @review = Review.new
+    @message = Message.new
+    @user = Caddie.find(params[:id]).user
   end
 
   def new
