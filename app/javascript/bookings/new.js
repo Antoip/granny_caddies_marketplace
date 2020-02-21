@@ -1,5 +1,5 @@
-const startDate = document.querySelector(".start-date")
-const endDate = document.querySelector(".end-date")
+const startDate = document.getElementById("range_start")
+const endDate = document.getElementById("range_end")
 const price = document.querySelector(".price-antoine")
 
 if (startDate) {
@@ -8,7 +8,6 @@ if (startDate) {
                            endValue = new Date(endDate.value);
                            dateDiff = (endValue - startValue)/1000/3600/24;
                            const initPrice = price.dataset.price
-                           console.log(isNaN(dateDiff))
                            if (isNaN(dateDiff)) {
                             price.innerText = initPrice;
                            } else {
@@ -21,7 +20,6 @@ if (startDate) {
                            endValue = new Date(endDate.value);
                            dateDiff = (endValue - startValue)/1000/3600/24;
                            const initPrice = price.dataset.price
-                           // console.log(isNaN(dateDiff))
                            if (isNaN(dateDiff)) {
                             price.innerText = initPrice;
                            } else {
@@ -29,3 +27,4 @@ if (startDate) {
                            };
                          });
 }
+

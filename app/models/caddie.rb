@@ -4,6 +4,7 @@ class Caddie < ApplicationRecord
 
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_many :notifications, through: :bookings, dependent: :destroy
   # has_many :users, through: :bookings
   has_many :reviews, through: :bookings, dependent: :destroy
   has_one_attached :photo
@@ -22,8 +23,22 @@ class Caddie < ApplicationRecord
   WHEELS_NUMBER = (2..7).to_a
   CAPACITY = (1..20).to_a
 
+
   include PgSearch::Model
   multisearchable against: [:name, :description, :address, :price] ,  using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
+  def changeAvailability
+    if availability == true
+      availability = false
+    else
+      availability = true
+    end
+  end
+
+  def unread_notifications
+    self.notifications.where(read_status: false).length
+  end
+
 end

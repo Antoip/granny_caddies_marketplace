@@ -1,57 +1,60 @@
-<div class="container mt-3 mb-5">
-  <div>
-    <h2>Your Caddies</h2>
-    <% if Caddie.where(user_id: current_user).empty? %>
-      <%= "You have not uploadec any caddie..." %>
-    <% else %>
-      <div class="accordion d-flex flex-column align-items-center" id="accordionCaddies">
-        <% i=1 %>
-        <% Caddie.where(user_id: current_user).each do |caddie| %>
-        <% i+=1 %>
-        <div class="cardy borders w-75">
-          <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
-            <h2 class="mb-0">
-              <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
-                <%= caddie.name.capitalize %>
-              </button>
-            </h2>
-            <div class="d-flex align-items-center">
-              <% if caddie.availability %>
-                <i class="fas fa-circle available"></i>
-              <% else %>
-                <i class="fas fa-circle unavalable"></i>
-              <% end %>
-              <div class="btn btn-perso2 ml-3">
-              <% if caddie.availability %>
-                Make unavailable
-              <% else %>
-                Make available
-              <% end %>
-              </div>
-            </div>
-          </div>
+<div class="container mb-5">
 
-          <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
-            <div class="card-body d-flex position-relative">
-              <%= cl_image_tag caddie.photo.key, height: 160, width: 200, crop: :fill %>
-              <div class="card-product-infos">
-                  <ul><strong>Product overview :</strong>
-                    <li>Condition : <%= caddie.condition %></li>
-                    <li>Number of wheels : <%= caddie.wheels_number %></li>
-                    <li>Capacity : <%= caddie.capacity %></li>
-                  </ul>
-                  <div class="badge badge-secondary pricey"><%= caddie.price %> €</div>
+  <div class="mt-5 dash-card">
+    <h2>Your Conversations</h2>
+      <% if current_user.friends.empty? %>
+        <%= "You have no active conversation..." %>
+      <% else %>
+        <div class="d-flex flex-column align-items-center">
+          <% current_user.friends.each do |friend| %>
+          <div class="cardy borders w-75">
+            <div class="card-header d-flex justify-content-between collapsable">
+                <div class="d-flex justify-content-start">
+                  <button type="button" class="btn btn-transp" id="message-btn" data-toggle="modal" data-target="#modal-<%= friend.id %>" data-friend-id="<%= friend.id %>">
+                    <div>
+                      <%= friend.email %>
+                    </div>
+                  </button>
+                  <% unread = current_user.conversation_with(friend.id).select { |inst| inst.read == false } %>
+                  <% unread.length %>
+                  <div class="modal fade" id="modal-<%= friend.id %>" tabindex="-1" role="dialog" aria-labelledby="<%= friend.id %>Label" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="<%= friend.id %>Label">Conversation with <%= friend.email.scan(/^\w+/).join.capitalize %></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <% current_user.conversation_with(friend.id).each do |message| %>
+                            <% if message.sender == current_user %>
+                              <div class="d-flex justify-content-end"><p class="btn btn-message-sent"><%= message.content %></p></div>
+                            <% else %>
+                              <div class="d-flex justify-content-start"><p class="btn btn-message-received"><%= message.content %></p></div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <%= simple_form_for [friend, Message.new], wrapper: :inline_form, html: { class: 'form-inline d-flex w-100 justify-content-between' } do |f| %>
+                            <%= f.input :content, label: false %>
+                            <%= f.button :submit, 'Send message' , class: "btn btn-perso ml-3" %>
+                            <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
             </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
-  <% end %>
+      <% end %>
   </div>
 
-  <div class="row">
-    <div class="col-6 mt-5" id="booking-to-come-height">
+  <div class="row d-flex justify-content-between">
+    <div class="col-6 mt-5 dash-card" id="booking-to-come-height">
       <h2>Your bookings to come</h2>
       <% if Booking.where(user_id: current_user).where("start_date > 'today'").empty? %>
         <%= "You don't have any booking to come..." %>
@@ -59,7 +62,7 @@
         <div class="accordion d-flex flex-column align-items-center" id="accordionCaddies">
           <% i=100 %>
           <% today = Date.today %>
-          <% Booking.where(user_id: current_user).where("start_date > 'today'").each do |booking| %>
+          <% Booking.where(user_id: current_user).where("end_date >= 'today'").each do |booking| %>
           <% i+=1 %>
           <div class="cardy borders w-100">
             <div class="card-header d-flex justify-content-between" id="heading<%= i %>">
@@ -68,18 +71,45 @@
                   <%= booking.caddie.name.capitalize %>
                 </button>
               </h2>
-                <div class="btn btn-perso2">Cancel</div>
+              <div class="d-flex align-items-center">
+                <% if booking.state == "Approved" %>
+                  <div id="countdown">
+                    <% if booking.start_date > today %>
+                      <%= "In #{(booking.start_date - today).to_i} days" %>
+                    <% else %>
+                      <%= "Ends in #{(booking.end_date - today).to_i} days" %>
+                    <% end %>
+                  </div>
+                <% elsif booking.state == "Pending" %>
+                  <div id="countdown">
+                    Pending
+                  </div>
+                <% else %>
+                  <div id="countdown">
+                    Request Refused
+                  </div>
+                <% end %>
+
+                <%= link_to "Cancel", "/bookings/#{booking.id}", method: 'delete', data: { confirm: "Are you sure?" }, class: "btn btn-perso2 ml-3" %>
+              </div>
             </div>
 
             <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
               <div class="card-body d-flex position-relative">
                 <%= cl_image_tag booking.caddie.photo.key, height: 160, width: 200, crop: :fill %>
                   <div class="card-product-infos">
+                    <div class="row">
+                    <div class="col-8">
                     <ul><strong>Booking overview :</strong>
                       <li>Start date : <%= booking.start_date %></li>
                       <li>End date : <%= booking.end_date %></li>
-                      <li>Price : <%= booking.price %> €</li>
+                      <li>Price : <%= booking.price * (booking.end_date - booking.start_date).to_i %> €</li>
                     </ul>
+                    </div>
+                    <div class="col-4 d-flex justify-content-end align-items-center text-center">
+                      <%= link_to 'See Caddie', caddy_path(booking.caddie) %>
+                    </div>
+                    </div>
                   </div>
                 </div>
             </div>
@@ -89,7 +119,7 @@
       <% end %>
     </div>
 
-    <div class="col-6 mt-5">
+    <div class="col-5 mt-5 dash-card">
       <h2>Your previous orders</h2>
         <% if Booking.where(user_id: current_user).where("end_date < 'today'").empty? %>
           <%= "You have never booked a caddie 😢" %>
@@ -106,7 +136,11 @@
                     <%= booking.caddie.name.capitalize %>
                   </button>
                 </h2>
+                <% if booking.reviews.empty? %>
                 <%= link_to "Rate it!", new_booking_review_path(booking), class: "btn btn-perso2"  %>
+                <% else %>
+                <div class="btn btn-perso2 disabled">Thanks!</div>
+                <% end %>
               </div>
 
               <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
@@ -116,7 +150,7 @@
                       <ul><strong>Booking overview :</strong>
                         <li>Start date : <%= booking.start_date %></li>
                         <li>End date : <%= booking.end_date %></li>
-                        <li>Price : <%= booking.price %> €</li>
+                        <li>Price : <%= booking.price * (booking.end_date - booking.start_date).to_i %> €</li>
                       </ul>
                     </div>
                   </div>
@@ -127,4 +161,61 @@
         <% end %>
     </div>
   </div>
+  <div class="mt-5 dash-card">
+    <h2>Your Caddies</h2>
+    <% if Caddie.where(user_id: current_user).empty? %>
+      <%= "You have not uploadec any caddie..." %>
+    <% else %>
+      <div class="accordion d-flex flex-column align-items-center" id="accordionCaddies">
+        <% i=1 %>
+        <% Caddie.where(user_id: current_user).each do |caddie| %>
+          <% i+=1 %>
+          <div class="cardy borders w-75">
+            <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
+              <h2 class="mb-0">
+                <button class="btn btn-transp collapsed" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="false" aria-controls="collapse<%= i %>">
+                  <%= caddie.name.capitalize %>
+                </button>
+              </h2>
+              <div class="d-flex align-items-center">
+                <% if caddie.availability %>
+                  <i class="fas fa-circle available"></i>
+                <% else %>
+                  <i class="fas fa-circle unavailable"></i>
+                <% end %>
+                <div>
+                  <%= link_to "/caddies/#{caddie.id}/availability", method: 'patch', class: "btn btn-perso2 ml-3", id: "availability-btn" do %>
+                    <% if caddie.availability %>
+                      Make unavailable
+                    <% else %>
+                      Make available
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordionCaddies">
+              <div class="card-body d-flex position-relative">
+                <%= cl_image_tag caddie.photo.key, height: 160, width: 200, crop: :fill %>
+                <div class="card-product-infos">
+                    <ul><strong>Product overview :</strong>
+                      <li>Condition : <%= caddie.condition %></li>
+                      <li>Number of wheels : <%= caddie.wheels_number %></li>
+                      <li>Capacity : <%= caddie.capacity %> L</li>
+                    </ul>
+                    <div class="badge badge-secondary pricey"><%= caddie.price %> €</div>
+                    <%= link_to 'See Caddie', caddy_path(caddie), id: "to-show" %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  <% end %>
+  </div>
+
+
+
+
 </div>

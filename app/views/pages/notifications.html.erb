@@ -1,0 +1,28 @@
+<div class="mt-5 notification-container">
+  <h1>Notifications</h1>
+  <% if current_user.notifications.empty? %>
+    <%= "You don't have any notification yet" %>
+  <% else %>
+    <div class="notification-card d-flex flex-column align-items-center">
+      <% i=1 %>
+      <% current_user.notifications.each do |notification| %>
+        <% i+=1 %>
+        <div class="cardy borders w-75">
+          <div class="card-header d-flex justify-content-between collapsable" id="heading<%= i %>">
+            <p class="mb-0">
+              <%= link_to "/notifications/#{notification.id}/read_status", method: 'patch' do %>
+                <button class="btn <%=notification.read_status ? "read" : "unread" %>-notification collapsed"
+                        type="button" data-toggle="collapse" data-target="#collapse<%= i %>"
+                        aria-expanded="false" aria-controls="collapse<%= i %>">
+                  <%= notification.description %>
+                </button>
+              <% end %>
+            </p>
+          </div>
+
+
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

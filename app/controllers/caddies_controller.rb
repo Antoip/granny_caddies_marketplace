@@ -1,11 +1,11 @@
 class CaddiesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_caddie, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-
     if params[:query].nil?
-      @caddies = Caddie.all
+      @caddies = Caddie.where(availability: true)
       @caddies_geo = Caddie.geocoded
       @markers = @caddies_geo.map do |caddie|
         {
@@ -36,15 +36,12 @@ class CaddiesController < ApplicationController
 
 
       end
-
-
-
-    end
   end
 
   def show
-    @caddie = Caddie.find(params[:id])
     @review = Review.new
+    @message = Message.new
+    @user = Caddie.find(params[:id]).user
   end
 
   def new
@@ -61,28 +58,41 @@ class CaddiesController < ApplicationController
     end
   end
 
-def caddie_params
-  params.require(:caddie).permit(:title, :body, :photo)
-end
-
   def edit
-    @caddie = Caddie.find(params[:id])
   end
 
   def update
-    @caddie = Caddie.find(params[:id])
-
     if @caddie.update(caddie_params)
-      redirect_to caddy_path(@caddie)
+      redirect_to dashboard_path
     else
       render :edit
     end
   end
 
+  def update_availability
+    @caddie = Caddie.find(params[:id])
+    if @caddie.availability == true
+      @caddie.availability = false
+    else
+      @caddie.availability = true
+    end
+    @caddie.update({availability: @caddie.availability})
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    @caddie.delete
+    redirect_to caddies_path
+  end
+
   private
 
+  def set_caddie
+    @caddie = Caddie.find(params[:id])
+  end
+
   def caddie_params
-    params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity, :price, :photo)
+    params.require(:caddie).permit(:name, :description, :availability, :condition, :wheels_number, :capacity, :price, :photo, :address)
   end
 
 end

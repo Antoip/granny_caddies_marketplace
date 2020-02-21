@@ -1,10 +1,15 @@
-<div class="container mt-3 mb-5">
+<div class="container-fluid pl-0">
   <div class="row">
-    <h1>Fill the form below to give a new life to your caddie</h1>
-  </div>
-  <div class="row d-flex justify-content-around">
-  <div class="form">
-    <%= render 'shared/form_caddie', caddie: @caddie %>
-  </div>
+    <div class="col-6">
+      <div id="add-caddie">
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-4 mt-3 mb-5">
+      <h1>Fill the form below to give a new life to your caddie</h1>
+      <div class="form w-100">
+        <%= render 'shared/form_caddie', caddie: @caddie %>
+      </div>
+    </div>
   </div>
 </div>

@@ -6,12 +6,36 @@
 
 .mapboxgl-popup {
   max-width: 200px;
+  border-radius: 10px;
 }
 
 .mapboxgl-popup-content {
   text-align: center;
+  border-radius: 10px;
 }
 
 .map-container {
   width: 30vw;
+}
+
+.map-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.map-h2 {
+  font-size: 18px;
+  color: rgb(112,111,113)
+}
+
+.map-p {
+  padding: 8px 0px 0px 0px;
+  font-size: 18px;
+  color: rgb(196, 150, 206)
+}
+
+.popup-link-decoration {
+  text-decoration: none !important;
 }
